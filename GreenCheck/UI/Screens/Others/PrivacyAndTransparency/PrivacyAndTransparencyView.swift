@@ -4,20 +4,14 @@ struct PrivacyAndTransparencyView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openURL) private var openURL
 
+    private let auditCodeURL = URL(string: "https://github.com/rajbirsehmi/GreenCheck-iOS")!
     private let odblLicenseURL = URL(string: "https://opendatacommons.org/licenses/odbl/1-0/")!
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-                    // Header Title
-                    Text("Privacy & Transparency")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundStyle(Color.primary)
-                        .padding(.top, 8)
-
-                    // Feature Items
+                    // Feature Items List
                     VStack(alignment: .leading, spacing: 20) {
                         PrivacyAndTransparencyFeatureRow(
                             icon: "dollarsign.circle.fill",
@@ -50,27 +44,44 @@ struct PrivacyAndTransparencyView: View {
                         )
                     }
 
-                    // Action Button Section (Audit Button Skipped)
-                    VStack {
-                        Link(destination: odblLicenseURL) {
-                            HStack {
-                                Spacer()
-                                Text("ODbL License")
-                                    .font(.headline)
-                                    .fontWeight(.semibold)
-                                Spacer()
-                            }
-                            .padding(.vertical, 14)
-                            .background(Color.accentColor.opacity(0.15))
-                            .foregroundStyle(Color.accentColor)
-                            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                    // Side-by-Side Action Buttons Section
+                    HStack(spacing: 12) {
+                        // Audit Code Button
+                        Button {
+                            openURL(auditCodeURL)
+                        } label: {
+                            Text("Audit Code")
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 14)
                         }
+                        .buttonStyle(.bordered)
+                        .tint(.accentColor)
+                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+
+                        // ODbL License Button
+                        Button {
+                            openURL(odblLicenseURL)
+                        } label: {
+                            Text("ODbL License")
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 14)
+                        }
+                        .buttonStyle(.bordered)
+                        .tint(.accentColor)
+                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                     }
                     .padding(.top, 12)
                 }
                 .padding(.horizontal, 20)
+                .padding(.top, 16)
                 .padding(.bottom, 24)
             }
+            .navigationTitle("Privacy & Transparency")
+            .navigationBarTitleDisplayMode(.inline)
             .background(Color(uiColor: .systemBackground))
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
@@ -84,7 +95,7 @@ struct PrivacyAndTransparencyView: View {
     }
 }
 
-// MARK: - HIG Feature Item Subview
+// MARK: - Feature Item Row Subview
 private struct PrivacyAndTransparencyFeatureRow: View {
     let icon: String
     let title: String
@@ -92,7 +103,6 @@ private struct PrivacyAndTransparencyFeatureRow: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
-            // Circle Icon Container
             ZStack {
                 Circle()
                     .fill(Color(uiColor: .secondarySystemFill))
@@ -103,7 +113,6 @@ private struct PrivacyAndTransparencyFeatureRow: View {
                     .foregroundStyle(Color.accentColor)
             }
 
-            // Text Content
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .font(.headline)
@@ -119,7 +128,7 @@ private struct PrivacyAndTransparencyFeatureRow: View {
     }
 }
 
-// MARK: - Preview Sheet Context
+// MARK: - Preview Context
 #Preview {
     Text("Host Screen")
         .sheet(isPresented: .constant(true)) {
