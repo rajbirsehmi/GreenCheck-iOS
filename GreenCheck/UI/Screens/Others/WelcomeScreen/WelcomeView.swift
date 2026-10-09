@@ -6,29 +6,28 @@ struct WelcomeView: View {
     var body: some View {
         VStack(spacing: 0) {
             ScrollView {
-                VStack(spacing: 32) {
-                    // Hero Header Section with App Logo
+                VStack(spacing: 36) {
+                    // Hero Header Section
                     VStack(spacing: 16) {
                         Image("logo")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 80, height: 80)
-                            .clipShape(AppShapes.large)
+                            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
                             .shadow(color: Color.black.opacity(0.08), radius: 10, x: 0, y: 4)
-                            .padding(.top, 36)
+                            .padding(.top, 40)
 
                         Text("Welcome to GreenCheck")
-                            .font(.title)
+                            .font(.largeTitle)
                             .fontWeight(.bold)
                             .multilineTextAlignment(.center)
-                            .foregroundStyle(AppColors.onBackground)
+                            .foregroundStyle(Color.primary)
                             .minimumScaleFactor(0.8)
-                            .lineLimit(2)
                             .padding(.horizontal, 24)
 
                         Text("Your fast, privacy-focused companion for conscious dietary choices.")
                             .font(.subheadline)
-                            .foregroundStyle(AppColors.onSurfaceVariant)
+                            .foregroundStyle(Color.secondary)
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 32)
                     }
@@ -58,33 +57,33 @@ struct WelcomeView: View {
                     }
                     .padding(.horizontal, 24)
                 }
+                .padding(.bottom, 24)
             }
 
             // Bottom Action Section
-            VStack(spacing: 16) {
+            VStack(spacing: 12) {
                 Button {
                     dismiss()
                 } label: {
                     Text("Get Started")
                         .font(.headline)
                         .fontWeight(.semibold)
-                        .foregroundStyle(AppColors.onPrimary)
                         .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .background(AppColors.primary)
-                        .clipShape(AppShapes.medium)
                 }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .tint(.accentColor)
 
                 Text("Powered by Open Food Facts")
                     .font(.caption2)
-                    .foregroundStyle(AppColors.onSurfaceVariant)
+                    .foregroundStyle(Color.secondary)
             }
             .padding(.horizontal, 24)
             .padding(.top, 16)
             .padding(.bottom, 24)
-            .background(AppColors.background.ignoresSafeArea(edges: .bottom))
+            .background(Color(uiColor: .systemBackground))
         }
-        .background(AppColors.background.ignoresSafeArea())
+        .background(Color(uiColor: .systemBackground).ignoresSafeArea())
         .interactiveDismissDisabled()
     }
 }
@@ -98,23 +97,31 @@ private struct OnboardingFeatureRow: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
-            Image(systemName: icon)
-                .font(.title2)
-                .foregroundStyle(iconColor)
-                .frame(width: 44, height: 44)
-                .background(iconColor.opacity(0.12))
-                .clipShape(AppShapes.small)
+            ZStack {
+                Circle()
+                    .fill(Color(uiColor: .secondarySystemFill))
+                    .frame(width: 44, height: 44)
+
+                Image(systemName: icon)
+                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundStyle(iconColor)
+            }
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .font(.headline)
-                    .foregroundStyle(AppColors.onBackground)
+                    .foregroundStyle(Color.primary)
 
                 Text(description)
                     .font(.subheadline)
-                    .foregroundStyle(AppColors.onSurfaceVariant)
+                    .foregroundStyle(Color.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
         }
     }
+}
+
+// MARK: - Preview Context
+#Preview {
+    WelcomeView()
 }
