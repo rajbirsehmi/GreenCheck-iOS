@@ -1,174 +1,404 @@
-# GreenCheck 🌿
+# 🌿 GreenCheck
 
-[![iOS 17.0+](https://img.shields.io/badge/iOS-17.0%2B-blue.svg?style=flat-square&logo=apple)](https://developer.apple.com/ios/)
-[![Swift 5.9+](https://img.shields.io/badge/Swift-5.9%2B-orange.svg?style=flat-square&logo=swift)](https://swift.org)
-[![SwiftUI](https://img.shields.io/badge/UI-SwiftUI-purple.svg?style=flat-square)](https://developer.apple.com/xcode/swiftui/)
-[![SwiftData](https://img.shields.io/badge/Storage-SwiftData-green.svg?style=flat-square)](https://developer.apple.com/documentation/swiftdata)
-[![Privacy First](https://img.shields.io/badge/Privacy-100%25%20On--Device-teal.svg?style=flat-square)]()
-[![Zero Dependencies](https://img.shields.io/badge/Dependencies-Zero%203rd--Party-success.svg?style=flat-square)]()
+<p align="center">
+  <img src="GreenCheck/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon.png" width="110" alt="GreenCheck App Icon" />
+</p>
 
-> **Scan packaged food barcodes to instantly verify vegan status, explore detailed ingredient analyses, and discover plant-based alternatives — all in a 100% ad-free, privacy-first iOS experience.**
+<h3 align="center">Know what's in your food. Choose what aligns with you.</h3>
 
----
+<p align="center">
+  Scan. Discover. Choose better.
+  <br />
+  A smarter way to make plant-based choices.
+</p>
 
-## 📸 Screenshots
+<p align="center">
+  <img src="https://img.shields.io/badge/iOS-17.0%2B-007AFF?style=flat-square&logo=apple&logoColor=white" alt="iOS 17+" />
+  <img src="https://img.shields.io/badge/Swift-5.9%2B-F05138?style=flat-square&logo=swift&logoColor=white" alt="Swift 5.9+" />
+  <img src="https://img.shields.io/badge/SwiftUI-Native-7B61FF?style=flat-square" alt="SwiftUI" />
+  <img src="https://img.shields.io/badge/SwiftData-On--Device-34A853?style=flat-square" alt="SwiftData" />
+  <img src="https://img.shields.io/badge/Privacy-First-14B8A6?style=flat-square" alt="Privacy First" />
+  <img src="https://img.shields.io/badge/Dependencies-Zero-22C55E?style=flat-square" alt="Zero Dependencies" />
+</p>
 
-| Home Dashboard | Barcode Scanner | Manual Search |
-| :---: | :---: | :---: |
-| <img src="GreenCheck/Screenshots/GreenCheck%20-%20Home%20Screen.png" width="250" alt="GreenCheck Home Screen" /> | <img src="GreenCheck/Screenshots/GreenCheck%20-%20Scanner%20Screen.png" width="250" alt="GreenCheck Camera Barcode Scanner" /> | <img src="GreenCheck/Screenshots/GreenCheck%20-%20Manual%20Entry%20Screen.png" width="250" alt="GreenCheck Manual Barcode Entry" /> |
-
-| Product Overview | Ingredient Analysis | Alternative Suggestions |
-| :---: | :---: | :---: |
-| <img src="GreenCheck/Screenshots/GreenCheck%20-%20Product%20Screen%20-%201.png" width="250" alt="Product Overview and Status" /> | <img src="GreenCheck/Screenshots/GreenCheck%20-%20Product%20Screen%20-%202.png" width="250" alt="Detailed Ingredient Analysis" /> | <img src="GreenCheck/Screenshots/GreenCheck%20-%20Product%20Screen%20-%203.png" width="250" alt="Plant-Based Product Alternatives" /> |
-
-| Scan History | History (Empty State) |
-| :---: | :---: |
-| <img src="GreenCheck/Screenshots/GreenCheck%20-%20History%20Screen.png" width="250" alt="Searchable Scan History" /> | <img src="GreenCheck/Screenshots/GreenCheck%20-%20History%20Screen%20(Empty).png" width="250" alt="Empty Scan History State" /> |
-
----
-
-## ✨ Features
-
-### 📷 High-Performance Camera Barcode Scanner
-- **AVFoundation-Powered**: Real-time scanning using hardware-accelerated video metadata capture (`AVCaptureMetadataOutput`).
-- **Comprehensive Symbology Support**: Scans EAN-13, EAN-8, UPC-E, UPC-A, Code 39, Code 128, and PDF417.
-- **Interactive Viewfinder**: Custom target overlay, focus frame animation, and flashlight/torch toggle.
-- **Haptic Feedback**: Instant tactile confirmation upon successful barcode detection.
-
-### ⌨️ Manual Barcode Entry
-- Dedicated numeric entry screen for items with damaged or unscannable barcodes.
-- Automated digit sanitization (limits to valid 14-digit UPC/EAN formats).
-- Live quota consumption badge indicator.
-
-### 🔬 Intelligent Dietary & Ingredient Analysis
-- **Instant Vegan Status Verification**: Evaluates ingredients into clear categories:
-  - 🟢 **Vegan Friendly** (`yes`)
-  - 🔴 **Non-Vegan Detected** (`no`)
-  - 🟡 **Uncertain Source** (`maybe`)
-  - ⚪ **Unknown** (`unknown`)
-- **Granular Ingredient Breakdown**: Inspects individual ingredients with percentage concentrations where provided by Open Food Facts.
-- **Expandable Raw Ingredients**: View full ingredient lists formatted directly from the product packaging.
-- **Plant-Based Alternatives Carousel**: When an inspected product is non-vegan or uncertain, GreenCheck queries category-matched vegan alternatives in real time.
-
-### 💾 Local Scan History (SwiftData)
-- **Automatic Caching**: Every inspected product is persisted locally using modern **SwiftData** (`ProductEntity`).
-- **Offline Access**: Review previously scanned items anytime without an internet connection.
-- **Search & Filter**: Search cached items by product name, brand, or barcode, with segmented filter controls (*All*, *Vegan*, *Non-Vegan*).
-- **History Management**: Swipe-to-delete individual entries or clear all history with a single tap.
-
-### ⏱️ On-Device Quota Management
-- Enforces friendly daily rate-limiting (10 camera scans + 10 manual lookups per day) to respect Open Food Facts public API infrastructure.
-- Zero server communication required for quotas — tracked securely and locally via `UserDefaults` and `@Observable` `QuotaManager`.
-- Automated midnight reset (12:00 AM local time).
-- Informative usage progress sheet and quota warning badges.
-
-### 🛡️ Privacy & Transparency
-- **100% Free & Ad-Free**: No subscriptions, paywalls, or third-party advertising SDKs.
-- **Zero Data Collection**: No accounts, logins, analytics trackers, or cloud tracking. All history and settings remain strictly on your physical device.
+<p align="center">
+  <strong>100% Free</strong> · <strong>Ad-Free</strong> · <strong>No Accounts</strong> · <strong>Your Data Stays on Your Device</strong>
+</p>
 
 ---
 
-## 🏛️ Architecture & Clean Code
+## 🌱 A little more transparency. A lot more confidence.
 
-GreenCheck is built using modern **Clean Architecture** and **MVVM (Model-View-ViewModel)** with Apple's modern Swift Observation framework:
+Ever picked up a snack and wondered whether it's actually vegan?
 
-```
+**GreenCheck makes finding out simple.**
+
+Scan a packaged food barcode or enter it manually to explore ingredient information, check reported vegan status, and discover plant-based alternatives when available.
+
+Built with native Swift and SwiftUI, GreenCheck combines a clean iOS experience with open food data, local scan history, and a privacy-first approach.
+
+No accounts to create. No ads to dismiss. No unnecessary complexity.
+
+Just the information you need to make a more informed choice.
+
+---
+
+## 📱 Take a look around
+
+<p align="center">
+  <img src="GreenCheck/Screenshots/GreenCheck%20-%20Welcome%20Screen.png" width="240" alt="GreenCheck onboarding screen" />
+  &nbsp;&nbsp;
+  <img src="GreenCheck/Screenshots/GreenCheck%20-%20Home%20Screen.png" width="240" alt="GreenCheck home screen" />
+  &nbsp;&nbsp;
+  <img src="GreenCheck/Screenshots/GreenCheck%20-%20Scanner%20Screen.png" width="240" alt="GreenCheck barcode scanner" />
+</p>
+
+<p align="center">
+  <em>A simple welcome. A clean home screen. A scanner ready to go.</em>
+</p>
+
+<p align="center">
+  <img src="GreenCheck/Screenshots/GreenCheck%20-%20Product%20Screen%20-%201.png" width="240" alt="Product overview and vegan status" />
+  &nbsp;&nbsp;
+  <img src="GreenCheck/Screenshots/GreenCheck%20-%20Product%20Screen%20-%202.png" width="240" alt="Detailed ingredient analysis" />
+  &nbsp;&nbsp;
+  <img src="GreenCheck/Screenshots/GreenCheck%20-%20Product%20Screen%20-%203.png" width="240" alt="Plant-based alternatives" />
+</p>
+
+<p align="center">
+  <em>Understand the product, explore its ingredients, and find alternatives.</em>
+</p>
+
+<p align="center">
+  <img src="GreenCheck/Screenshots/GreenCheck%20-%20Manual%20Entry%20Screen.png" width="240" alt="Manual barcode entry" />
+  &nbsp;&nbsp;
+  <img src="GreenCheck/Screenshots/GreenCheck%20-%20History%20Screen.png" width="240" alt="Product scan history" />
+  &nbsp;&nbsp;
+  <img src="GreenCheck/Screenshots/GreenCheck%20-%20Privacy%20%26%20Transparency.png" width="240" alt="Privacy and transparency information" />
+</p>
+
+<p align="center">
+  <em>Manual lookup, searchable history, and transparency by design.</em>
+</p>
+
+---
+
+## ✨ Made for everyday decisions
+
+### 📷 Scan it. Know it.
+
+Point your iPhone camera at a packaged food barcode and let GreenCheck do the lookup.
+
+* Real-time barcode detection powered by AVFoundation.
+* Support for EAN-13, EAN-8, UPC-A, UPC-E, Code 39, Code 128, and PDF417.
+* Custom viewfinder with focus-frame animation.
+* Built-in flashlight toggle for low-light environments.
+* Haptic feedback when a barcode is detected.
+
+### 🔬 Ingredients, without the guesswork
+
+Get a clearer picture of what goes into the products you buy.
+
+| Status                | What it means                                           |
+| --------------------- | ------------------------------------------------------- |
+| 🟢 Vegan friendly     | The available product data identifies it as vegan.      |
+| 🔴 Non-vegan detected | The available product data identifies it as non-vegan.  |
+| 🟡 Uncertain          | The product's vegan status is reported as uncertain.    |
+| ⚪ Unknown             | There isn't enough information to determine the status. |
+
+Explore individual ingredients, available concentration percentages, and the full ingredient list reported by the product database.
+
+*GreenCheck presents information from Open Food Facts. Results depend on the completeness and accuracy of the available data and are not an independent certification of a product.*
+
+### 🌿 Discover plant-based alternatives
+
+Found a product that isn't vegan, or one you're unsure about?
+
+GreenCheck can search for alternatives from related product categories, helping you explore other options without starting your search from scratch.
+
+Alternative suggestions depend on the products available in Open Food Facts.
+
+### ⌨️ No scanner? No problem.
+
+Damaged barcode? Camera not available?
+
+Enter the barcode manually using the dedicated numeric-entry screen.
+
+* Numeric-only input with digit sanitization.
+* Support for common UPC/EAN barcode lengths, up to 14 digits.
+* Live daily usage indicator.
+
+### 💾 Your scan history, right on your iPhone
+
+Every inspected product can be saved locally using SwiftData.
+
+* Browse previously scanned products without an internet connection.
+* Search by product name, brand, or barcode.
+* Filter between all products, vegan products, and non-vegan products.
+* Delete individual entries or clear your history.
+
+Your history stays on your device instead of being tied to an online account.
+
+### ⏱️ Thoughtful API usage
+
+GreenCheck uses daily lookup limits to help respect the public Open Food Facts API.
+
+| Lookup method  | Daily limit |
+| -------------- | ----------: |
+| Camera scans   |          10 |
+| Manual lookups |          10 |
+
+Usage is tracked locally and resets at midnight according to the device's local date. An in-app usage screen helps you see how much of your daily allowance remains.
+
+### 🛡️ Privacy isn't an afterthought
+
+GreenCheck is designed to work without collecting your personal information.
+
+* **No accounts or logins**
+* **No advertising or ad SDKs**
+* **No analytics trackers**
+* **No cloud-synced scan history**
+* **No external dependencies**
+
+Product lookups require an internet connection and send barcode-based requests to Open Food Facts. The app's local scan history, settings, and quota tracking remain on the device.
+
+Your product searches aren't the same thing as a personal profile. GreenCheck is built to keep the experience simple and minimize unnecessary data handling.
+
+---
+
+## 🧰 Built with Apple's native tools
+
+GreenCheck is written in Swift and uses Apple's native frameworks rather than a cross-platform UI layer or third-party dependency stack.
+
+| Area                      | Technology                                     |
+| ------------------------- | ---------------------------------------------- |
+| User interface            | SwiftUI                                        |
+| Minimum deployment target | iOS 17.0                                       |
+| Language                  | Swift 5.9+                                     |
+| State management          | Swift Observation                              |
+| Local persistence         | SwiftData                                      |
+| Barcode scanning          | AVFoundation                                   |
+| Networking                | URLSession                                     |
+| Data decoding             | Codable                                        |
+| Asynchronous operations   | Swift Concurrency (`async`/`await`)            |
+| Product database          | Open Food Facts API v2                         |
+| Typography                | Poppins font family                            |
+| Design system             | Custom semantic colors, shapes, and typography |
+| Third-party dependencies  | None                                           |
+
+### Why native Swift?
+
+Native frameworks provide a focused foundation for a lightweight iOS application, including direct access to the camera, local persistence, modern state management, and platform-native UI patterns.
+
+The result is a project that stays close to the Apple ecosystem and avoids unnecessary dependencies.
+
+---
+
+## 🏗️ Architecture
+
+GreenCheck follows a layered architecture with MVVM, repository abstractions, and separation between the domain, data, and presentation layers.
+
+```text
 GreenCheck/
 ├── App/
-│   └── GreenCheckApp.swift                 # App lifecycle, modelContainer, custom typography init
+│   └── GreenCheckApp.swift
+│
 ├── Core/
 │   ├── Local/
 │   │   ├── Database/
-│   │   │   ├── ProductEntity.swift         # SwiftData @Model schema & entity mappers
+│   │   │   ├── ProductEntity.swift
 │   │   │   ├── ProductLocalDataSource.swift
 │   │   │   └── ProductLocalDataSourceImpl.swift
 │   │   └── Model/
-│   │       ├── DietaryStatus.swift         # Dietary enum (yes, no, maybe, unknown)
-│   │       ├── IngredientItem.swift        # Ingredient domain model
-│   │       └── ProductItem.swift           # Product domain model & computed vegan status
+│   │       ├── DietaryStatus.swift
+│   │       ├── IngredientItem.swift
+│   │       └── ProductItem.swift
+│   │
 │   ├── Mapper/
-│   │   └── Product+IngredientMapper.swift  # DTO to Domain model mapping
+│   │   └── Product+IngredientMapper.swift
+│   │
 │   ├── Remote/
-│   │   ├── Model/                          # Decodable DTOs (ProductDTO, IngredientDTO, etc.)
+│   │   ├── Model/
 │   │   └── Network/
-│   │       ├── ApiEndpoints.swift          # Open Food Facts v2 endpoint builder
-│   │       ├── NetworkError.swift          # Custom networking errors
+│   │       ├── ApiEndpoints.swift
+│   │       ├── NetworkError.swift
 │   │       ├── ProductRemoteDataSource.swift
 │   │       └── ProductRemoteDataSourceImpl.swift
+│   │
 │   └── Repo/
-│       ├── ProductRepository.swift         # Repository protocol
-│       └── ProductRepositoryImpl.swift     # Offline-first caching & remote fallback logic
+│       ├── ProductRepository.swift
+│       └── ProductRepositoryImpl.swift
+│
 ├── UI/
 │   ├── HostScreen/
-│   │   └── HostScreen.swift                # Root TabView navigation & onboarding trigger
+│   │   └── HostScreen.swift
+│   │
 │   └── Screens/
-│       ├── Home/                           # Welcome banner, feature highlights & disclaimer
-│       ├── Scanner/                        # AVCapture preview, viewfinder overlay & ViewModel
-│       ├── Manual/                         # Numeric keypad lookup & ViewModel
-│       ├── Product/                        # Detailed inspection view & alternatives ViewModel
-│       ├── History/                        # SwiftData history list, filters & ViewModel
+│       ├── Home/
+│       ├── Scanner/
+│       ├── Manual/
+│       ├── Product/
+│       ├── History/
 │       └── Others/
-│           ├── WelcomeScreen/              # First-launch onboarding modal
-│           ├── UsageSheet/                 # Daily quota indicators & progress cards
-│           └── PrivacyAndTransparency/     # Privacy guarantee & ODbL open-data licensing
+│           ├── WelcomeScreen/
+│           ├── UsageSheet/
+│           └── PrivacyAndTransparency/
+│
 ├── Utils/
-│   ├── QuotaManager.swift                  # @Observable daily rate-limiter
-│   ├── LookupSource.swift                  # Source tracking (scanner vs manual)
-│   └── Utils.swift                         # Shared helpers
+│   ├── QuotaManager.swift
+│   ├── LookupSource.swift
+│   └── Utils.swift
+│
 └── Resources/
-    ├── Assets.xcassets                     # App icons, colors, illustrations
-    ├── Fonts/                              # Poppins font family suite (TTF)
-    ├── Mocks/                              # Offline JSON fixtures for testing
-    ├── Screenshots/                        # App showcase visual previews
-    └── Theme/                              # Semantic AppColors, AppShapes & FontExtension
+    ├── Assets.xcassets/
+    ├── Fonts/
+    ├── Mocks/
+    ├── Screenshots/
+    └── Theme/
 ```
 
----
+### How the pieces fit together
 
-## 🛠️ Tech Stack & Technologies
+* **Presentation:** SwiftUI screens and view models manage user interactions and screen state.
+* **Domain:** Product and ingredient models represent the information used throughout the application.
+* **Repository:** Coordinates local and remote data sources and supports cached product access.
+* **Local data:** SwiftData persists inspected products for future access.
+* **Remote data:** Native networking retrieves product and ingredient information from Open Food Facts.
+* **Utilities:** Shared helpers and `QuotaManager` handle lookup-source tracking, daily limits, and supporting functionality.
 
-| Layer / Component | Technology |
-| :--- | :--- |
-| **User Interface** | SwiftUI (iOS 17+) |
-| **State Management** | Swift Observation (`@Observable`, `@State`, `@Binding`) |
-| **Local Persistence** | SwiftData (`@Model`, `ModelContext`, `ModelContainer`) |
-| **Camera & Barcode** | AVFoundation (`AVCaptureSession`, `AVCaptureMetadataOutput`) |
-| **Networking** | Native `URLSession` + `Codable` with Swift Concurrency (`async`/`await`) |
-| **Typography & Theme** | Poppins Font Family Suite, Dynamic Type scaling, Custom Design Tokens |
-| **Data Source** | [Open Food Facts API v2](https://world.openfoodfacts.org/) |
-| **Dependencies** | **0 external dependencies** (Pure Swift / Native Apple SDKs) |
+This separation keeps UI code independent of the underlying data sources and makes individual components easier to maintain and test.
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Get started
 
-### Prerequisites
-- macOS Sonoma (14.0+) or later
-- Xcode 15.0+ or Xcode 16.0+
-- An iOS device running iOS 17.0+ (for camera barcode scanning; Simulator can test manual lookups)
+Want to explore the code, run the app, or build on top of it? Here's how to get started.
 
-### Installation & Running
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/your-username/GreenCheck.git
-   cd GreenCheck
-   ```
+### Requirements
 
-2. **Open in Xcode**:
-   ```bash
-   open GreenCheck.xcodeproj
-   ```
+* macOS Sonoma 14.0 or later.
+* Xcode 15 or later, with a compatible Swift toolchain.
+* An iPhone running iOS 17.0 or later for physical-device camera scanning.
+* Internet access for product lookups through Open Food Facts.
 
-3. **Select your target device or simulator**:
-   - Choose an iOS 17+ Simulator or your connected iPhone.
-   - For camera scanning, run on a physical iOS device (`NSCameraUsageDescription` is already pre-configured in `Info.plist`).
+### 1. Clone the repository
 
-4. **Build and Run**:
-   - Press `Cmd + R` in Xcode.
+```bash
+git clone https://github.com/your-username/GreenCheck.git
+cd GreenCheck
+```
+
+Replace `your-username` with the repository owner's GitHub username.
+
+### 2. Open the project
+
+```bash
+open GreenCheck.xcodeproj
+```
+
+### 3. Select your destination
+
+Choose an iOS 17+ simulator or connect your iPhone.
+
+The simulator can be used to explore the UI and test manual lookups. A physical device is required to test live camera barcode scanning.
+
+### 4. Build and run
+
+Press **⌘ R** in Xcode, or select **Product → Run**.
+
+Camera access must be permitted when prompted. The app's camera usage description should be configured in `Info.plist`.
 
 ---
 
-## 📄 License & Attribution
+## 🔌 Data source
 
-- **Product Data**: Product information, ingredients, and barcodes are retrieved from the open database provided by [Open Food Facts](https://world.openfoodfacts.org/) and licensed under the [Open Database License (ODbL) v1.0](https://opendatacommons.org/licenses/odbl/1-0/).
-- **Disclaimer**: GreenCheck is intended for informational and educational purposes. Always inspect physical packaging and allergen warnings for strict medical or dietary requirements.
+GreenCheck uses the [Open Food Facts API](https://world.openfoodfacts.org/) to retrieve packaged-food product information.
+
+Open Food Facts is an open, collaborative food database containing product names, brands, ingredients, barcodes, and other information contributed by its community.
+
+* Website: https://world.openfoodfacts.org/
+* API documentation: https://openfoodfacts.github.io/openfoodfacts-server/api/
+* Database license: [Open Database License (ODbL) v1.0](https://opendatacommons.org/licenses/odbl/1-0/)
+
+Product availability and the level of ingredient detail vary by item and region. GreenCheck does not independently verify every database entry.
+
+Please consult the original product packaging for authoritative ingredient and allergen information, especially when making decisions related to allergies or strict dietary requirements.
+
+---
+
+## 🔒 Privacy & transparency
+
+GreenCheck is designed around a straightforward principle:
+
+**The app should work for you without needing to know who you are.**
+
+There are no user accounts, advertising SDKs, or analytics trackers. Scan history, app settings, and daily usage tracking are stored locally.
+
+When you look up a product, GreenCheck communicates with Open Food Facts to retrieve its available information. That network request is necessary for remote product lookup and is separate from the locally stored app data.
+
+For more details, see the in-app **Privacy & Transparency** screen.
+
+---
+
+## 🗺️ Roadmap
+
+Ideas for future improvements as GreenCheck evolves:
+
+* [ ] Expand automated unit and UI test coverage.
+* [ ] Improve ingredient explanations and uncertainty handling.
+* [ ] Refine product matching and alternative discovery.
+* [ ] Add more offline-friendly product information.
+* [ ] Continue improving accessibility and Dynamic Type support.
+* [ ] Explore additional ways to make product data easier to understand.
+
+Have an idea? Suggestions and contributions are welcome.
+
+---
+
+## 🤝 Contributing
+
+Found a bug, spotted an issue, or have an idea that could make GreenCheck better?
+
+Contributions are welcome.
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Make your changes.
+4. Test your changes on a compatible iOS simulator or device.
+5. Submit a pull request describing what changed and why.
+
+For larger changes, opening an issue first is a good way to discuss the approach before investing time in implementation.
+
+Please keep changes focused, follow the existing architectural patterns, and prefer native Apple frameworks where practical.
+
+---
+
+## 📄 License & attribution
+
+### Open Food Facts
+
+Product data is provided by [Open Food Facts](https://world.openfoodfacts.org/) and is subject to the applicable [Open Database License (ODbL) v1.0](https://opendatacommons.org/licenses/odbl/1-0/).
+
+GreenCheck is an independent application and is not affiliated with or endorsed by Open Food Facts.
+
+### GreenCheck source code
+
+The source-code license for GreenCheck should be specified by the repository owner. Unless a license is included in the repository, no open-source license should be assumed.
+
+### Disclaimer
+
+GreenCheck is intended for informational and educational purposes only. Vegan classifications and ingredient information depend on the data available from Open Food Facts and may be incomplete, inaccurate, or outdated.
+
+Always check product packaging and manufacturer information for strict dietary requirements, allergies, or other health-related concerns.
+
+---
+
+<p align="center">
+  <strong>🌿 Better information. More mindful choices.</strong>
+  <br />
+  <sub>Made with SwiftUI, a love for clean code, and a little more transparency.</sub>
+</p>
+
+<p align="center">
+  <sub>GreenCheck — Know what you're choosing.</sub>
+</p>
