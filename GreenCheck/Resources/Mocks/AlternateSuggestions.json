@@ -1,0 +1,1415 @@
+{
+  "count": 30557,
+  "page": 1,
+  "page_count": 15,
+  "page_size": 15,
+  "products": [
+    {
+      "brands": "Ekibio, Le pain des Fleurs",
+      "categories_tags": [
+        "en:plant-based-foods-and-beverages",
+        "en:plant-based-foods",
+        "en:snacks",
+        "en:cereals-and-potatoes",
+        "en:cereals-and-their-products",
+        "en:extruded-crispbreads"
+      ],
+      "code": "06175700",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/000/000/617/5700/front_fr.90.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/000/000/617/5700/front_fr.90.400.jpg",
+      "ingredients": [
+        {
+          "ciqual_food_code": "9540",
+          "ecobalyse_code": "a2e25aca-1f42-4bc8-bc0e-4d7c751775aa",
+          "id": "en:buckwheat-flour",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 109.2,
+          "quantity_estimate": 109.2,
+          "text": "Farine de sarrasin",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        }
+      ],
+      "ingredients_analysis_tags": [
+        "en:palm-oil-free",
+        "en:vegan",
+        "en:vegetarian"
+      ],
+      "ingredients_text": "Farine de sarrasin.",
+      "labels_tags": [
+        "en:vegetarian",
+        "en:fair-trade",
+        "en:no-gluten",
+        "en:organic",
+        "en:crossed-grain-trademark",
+        "en:eu-organic",
+        "en:kosher",
+        "en:vegan",
+        "en:green-dot",
+        "en:nutriscore",
+        "en:nutriscore-grade-a",
+        "en:the-vegan-society",
+        "fr:ab-agriculture-biologique",
+        "fr:afdiag"
+      ],
+      "product_name": "Tartines craquantes au sarrasin imp"
+    },
+    {
+      "brands": "wasa, Barilla Sverige AB",
+      "categories_tags": [
+        "en:plant-based-foods-and-beverages",
+        "en:plant-based-foods",
+        "en:breakfasts",
+        "en:snacks",
+        "en:cereals-and-potatoes",
+        "en:salty-snacks",
+        "en:appetizers",
+        "en:cereals-and-their-products",
+        "en:chips-and-fries",
+        "en:breads",
+        "en:crisps",
+        "en:crispbreads",
+        "en:rusks",
+        "fr:Pain croquant"
+      ],
+      "code": "7300400481595",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/730/040/048/1595/front_fr.271.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/730/040/048/1595/front_fr.271.400.jpg",
+      "ingredients": [
+        {
+          "ciqual_food_code": "9530",
+          "ciqual_proxy_food_code": "9530",
+          "ecobalyse_proxy_id": "a2e25aca-1f42-4bc8-bc0e-4d7c751775aa",
+          "ecobalyse_proxy_name": "Farine UE -2025-",
+          "id": "en:wholemeal-rye-flour",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 52.62,
+          "quantity": "77 g",
+          "quantity_estimate": 52.62,
+          "quantity_g": 77,
+          "text": "Farine complète de SEIGLE",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "9532",
+          "ciqual_proxy_food_code": "9532",
+          "ecobalyse_proxy_id": "a2e25aca-1f42-4bc8-bc0e-4d7c751775aa",
+          "ecobalyse_proxy_name": "Farine UE -2025-",
+          "id": "en:rye-flour",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 52.62,
+          "quantity": "28 g",
+          "quantity_estimate": 52.62,
+          "quantity_g": 28,
+          "text": "farine de SEIGLE",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "11009",
+          "ciqual_proxy_food_code": "11009",
+          "id": "en:yeast",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 0,
+          "quantity_estimate": 0,
+          "text": "levure",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "11058",
+          "ecobalyse_proxy_id": "77defb24-cec3-4de9-8388-63229d1052fb",
+          "ecobalyse_proxy_name": "Sel -2025-",
+          "id": "en:salt",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 0,
+          "quantity_estimate": 0,
+          "text": "sel",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        }
+      ],
+      "ingredients_analysis_tags": [
+        "en:palm-oil-free",
+        "en:vegan",
+        "en:vegetarian"
+      ],
+      "ingredients_text": "Farine complète de SEIGLE (77 g*), farine de SEIGLE (28 g*), levure, sel. Peut contenir des traces de LUPIN, LAIT, MOUTARDE, GRAINES DE SÉSAME et SOJA. *en g pour 100 g de produit.",
+      "labels_tags": [
+        "en:vegetarian",
+        "en:green-dot",
+        "fr:triman"
+      ],
+      "product_name": "AUTHENTIQUE"
+    },
+    {
+      "brands": "wasa, Barilla Sverige AB",
+      "categories_tags": [
+        "en:plant-based-foods-and-beverages",
+        "en:plant-based-foods",
+        "en:snacks",
+        "en:cereals-and-potatoes",
+        "en:salty-snacks",
+        "en:appetizers",
+        "en:cereals-and-their-products",
+        "en:chips-and-fries",
+        "en:breads",
+        "en:crisps",
+        "en:crispbreads",
+        "en:extruded-crispbreads",
+        "en:crispbreads-wholemeal",
+        "en:extruded-and-grilled-crispbread"
+      ],
+      "code": "7300400481588",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/730/040/048/1588/front_en.269.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/730/040/048/1588/front_en.269.400.jpg",
+      "ingredients": [
+        {
+          "ciqual_food_code": "9530",
+          "ciqual_proxy_food_code": "9530",
+          "ecobalyse_proxy_id": "a2e25aca-1f42-4bc8-bc0e-4d7c751775aa",
+          "ecobalyse_proxy_name": "Farine UE -2025-",
+          "id": "en:wholemeal-rye-flour",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 55.8,
+          "quantity": "59 g",
+          "quantity_estimate": 55.8,
+          "quantity_g": 59,
+          "text": "Farine complète de SEIGLE",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "9621",
+          "id": "en:wheat-bran",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 21.09,
+          "quantity": "27 g",
+          "quantity_estimate": 21.09,
+          "quantity_g": 27,
+          "text": "son de BLÉ",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "9311",
+          "ecobalyse_id": "d8198264-e84f-51c9-9d54-1908734fe17f",
+          "ecobalyse_name": "Avoine HORS UE",
+          "id": "en:oat-flakes",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 21.09,
+          "quantity": "12 g",
+          "quantity_estimate": 21.09,
+          "quantity_g": 12,
+          "text": "flocons d'AVOINE",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "15010",
+          "ecobalyse_id": "33408c9c-e1fd-506c-983c-ff92a6160e4d",
+          "ecobalyse_name": "Graines de sésame Origine Inconnue",
+          "id": "en:sesame-seeds",
+          "is_in_taxonomy": 1,
+          "percent": 7,
+          "percent_estimate": 6.5,
+          "quantity_estimate": 6.5,
+          "text": "GRAINES DE SÉSAME",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "9660",
+          "id": "en:wheat-germ",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 0,
+          "quantity_estimate": 0,
+          "text": "germe de BLÉ",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "11058",
+          "ecobalyse_proxy_id": "77defb24-cec3-4de9-8388-63229d1052fb",
+          "ecobalyse_proxy_name": "Sel -2025-",
+          "id": "en:salt",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 0,
+          "quantity_estimate": 0,
+          "text": "sel",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        }
+      ],
+      "ingredients_analysis_tags": [
+        "en:palm-oil-free",
+        "en:vegan",
+        "en:vegetarian"
+      ],
+      "ingredients_text": "Farine complète de SEIGLE 59 g*, son de BLÉ 27 g*, flocons d'AVOINE 12 g*, GRAINES DE SÉSAME 7,0 g*, germe de BLÉ, sel. *en g pour 100 g de produit fini. Peut contenir des traces de LUPIN, LAIT, MOUTARDE et SOJA.",
+      "labels_tags": [
+        "en:vegetarian",
+        "en:source-of-fibre",
+        "en:green-dot",
+        "en:high-fibres",
+        "fr:triman",
+        "fr:Emballage-recyclable"
+      ],
+      "product_name": "Fibres"
+    },
+    {
+      "brands": "GALLETAS GULLON S.A.",
+      "categories_tags": [
+        "en:snacks",
+        "en:sweet-snacks",
+        "en:biscuits-and-cakes",
+        "en:biscuits-and-crackers",
+        "en:biscuits",
+        "en:crackers-breakfast"
+      ],
+      "code": "8410376009392",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/841/037/600/9392/front_en.104.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/841/037/600/9392/front_en.104.400.jpg",
+      "ingredients": [
+        {
+          "ciqual_food_code": "9410",
+          "ciqual_proxy_food_code": "9410",
+          "ecobalyse_code": "a2e25aca-1f42-4bc8-bc0e-4d7c751775aa",
+          "id": "en:whole-wheat-flour",
+          "is_in_taxonomy": 1,
+          "percent": 57.5,
+          "percent_estimate": 56.21,
+          "quantity_estimate": 56.21,
+          "text": "whole wheat flour",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "additive_class": "en:sweetener",
+          "id": "en:e965",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 17.3,
+          "quantity_estimate": 17.3,
+          "text": "maltitol",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "17001",
+          "from_palm_oil": "maybe",
+          "id": "en:vegetable-oil",
+          "ingredients": [
+            {
+              "id": "en:sunflower high oleic",
+              "is_in_taxonomy": 0,
+              "percent_estimate": 8.68,
+              "quantity_estimate": 8.68,
+              "text": "sunflower high oleic"
+            }
+          ],
+          "is_in_taxonomy": 1,
+          "percent": 16.5,
+          "percent_estimate": 8.68,
+          "quantity_estimate": 8.68,
+          "text": "vegetable oil",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "id": "en:vegetable-fiber",
+          "is_in_taxonomy": 1,
+          "percent": 3.5,
+          "percent_estimate": 5.33,
+          "quantity_estimate": 5.33,
+          "text": "vegetable fibre",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "id": "en:pea-fiber",
+          "is_in_taxonomy": 1,
+          "percent": 3.5,
+          "percent_estimate": 3.64,
+          "quantity_estimate": 3.64,
+          "text": "pea fiber",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "additive_class": "en:raising-agent",
+          "id": "en:e500ii",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 2.67,
+          "quantity_estimate": 2.67,
+          "text": "sodium hydrogen carbonate",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "additive_class": "en:raising-agent",
+          "id": "en:e503ii",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 2.06,
+          "quantity_estimate": 2.06,
+          "text": "ammonium hydrogen carbonate",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "42200",
+          "id": "en:soya-lecithin",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 1.64,
+          "quantity_estimate": 1.64,
+          "text": "soya lecithin",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "11058",
+          "id": "en:salt",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 1.34,
+          "quantity_estimate": 1.34,
+          "text": "salt",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "id": "en:flavouring",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 1.12,
+          "quantity_estimate": 1.12,
+          "text": "flavours",
+          "vegan": "maybe",
+          "vegetarian": "maybe"
+        }
+      ],
+      "ingredients_analysis_tags": [
+        "en:palm-oil-free",
+        "en:vegan",
+        "en:vegetarian"
+      ],
+      "ingredients_text": "whole  wheat  flour 57,5 %, sweetener (maltitol), vegetable oil 16,5 % (sunflower high oleic), vegetable fibre 3,5 %, pea fiber 3,5 %, raising agents (sodium hydrogen carbonate and ammonium hydrogen carbonate), emulsifier ( soya  lecithin), salt, flavours,",
+      "labels_tags": [
+        "en:low-or-no-sugar",
+        "en:vegetarian",
+        "en:european-vegetarian-union",
+        "en:nutriscore",
+        "en:source-of-fibre",
+        "en:vegan",
+        "en:with-sweeteners",
+        "en:green-dot",
+        "en:high-fibres",
+        "en:no-sugar",
+        "en:nutriscore-grade-b",
+        "es:Recicla amarillo",
+        "es:Recicla azul",
+        "pt:Ecoponto amarelo",
+        "pt:Ecoponto azul"
+      ],
+      "product_name": "gullon fibre zero sugar free"
+    },
+    {
+      "brands": "Cristaline",
+      "categories_tags": [
+        "en:beverages-and-beverages-preparations",
+        "en:beverages",
+        "en:snacks",
+        "en:waters",
+        "en:spring-waters"
+      ],
+      "code": "3268840001008",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/326/884/000/1008/front_fr.422.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/326/884/000/1008/front_fr.422.400.jpg",
+      "ingredients": [
+        {
+          "ciqual_food_code": "18066",
+          "ecobalyse_code": "36b3ffec-51e7-4e26-b1b5-7d52554e0aa6",
+          "id": "en:spring-water",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 100,
+          "quantity_estimate": 100,
+          "text": "Eau de source",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        }
+      ],
+      "ingredients_analysis_tags": [
+        "en:palm-oil-free",
+        "en:vegan",
+        "en:vegetarian"
+      ],
+      "ingredients_text": "Eau de source",
+      "labels_tags": [
+        "fr:triman",
+        "fr:Sans Nitrates"
+      ],
+      "product_name": "CRISTALINE Eau De Source 0.5L"
+    },
+    {
+      "brands": "",
+      "categories_tags": [
+        "en:snacks",
+        "en:sweet-snacks",
+        "en:cocoa-and-its-products",
+        "en:chocolates",
+        "en:dark-chocolates"
+      ],
+      "code": "20995553",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/000/002/099/5553/front_en.380.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/000/002/099/5553/front_en.380.400.jpg",
+      "ingredients": [
+        {
+          "ciqual_food_code": "16030",
+          "ciqual_proxy_food_code": "16030",
+          "id": "en:cocoa-paste",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 60.58,
+          "quantity_estimate": 60.58,
+          "text": "Какаова маса",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "18100",
+          "ecobalyse_id": "3d7f808b-77c5-4207-968d-feea6dfd9496",
+          "ecobalyse_name": "Poudre de cacao par défaut -2025-",
+          "id": "en:fat-reduced-cocoa-powder",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 19.13,
+          "quantity_estimate": 19.13,
+          "text": "нискомаслено какао на прах",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "16030",
+          "ecobalyse_id": "0ea5f5a0-51d9-41da-9ac4-cb60f3ddb86c",
+          "ecobalyse_name": "Beurre de cacao par défaut -2025-",
+          "from_palm_oil": "no",
+          "id": "en:cocoa-butter",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 9.93,
+          "quantity_estimate": 9.93,
+          "text": "какаово масло",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "31016",
+          "ciqual_proxy_food_code": "31016",
+          "ecobalyse_id": "5fc8032f-ca1c-4497-844b-f9213075eab3",
+          "ecobalyse_name": "Sucre de betterave par défaut -2025-",
+          "id": "en:sugar",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 6.36,
+          "quantity_estimate": 6.36,
+          "text": "захар",
+          "vegan": "maybe",
+          "vegetarian": "yes"
+        },
+        {
+          "additive_class": "en:emulsifier",
+          "id": "en:e322i",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 2,
+          "quantity_estimate": 2,
+          "text": "лецитин",
+          "vegan": "maybe",
+          "vegetarian": "maybe"
+        },
+        {
+          "ciqual_food_code": "11065",
+          "ciqual_proxy_food_code": "11065",
+          "ecobalyse_id": "77dc04ff-6163-5b79-8657-381436135399",
+          "ecobalyse_name": "Extrait de vanille, alcoolique ou aqueux HORS UE",
+          "id": "en:vanilla-extract",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 2,
+          "quantity_estimate": 2,
+          "text": "екстракт от ванилия",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        }
+      ],
+      "ingredients_analysis_tags": [
+        "en:palm-oil-free",
+        "en:vegan",
+        "en:vegetarian"
+      ],
+      "ingredients_text": "Какаова маса, нискомаслено какао на прах, какаово масло, захар, емулгатор: лецитин (соеви), екстракт от ванилия, Може да съдържа следи от ядки и мляко,",
+      "labels_tags": [
+        "en:fair-trade",
+        "en:vegetarian",
+        "en:fairtrade-international",
+        "en:fsc",
+        "en:max-havelaar",
+        "en:no-artificial-flavors",
+        "en:vegan",
+        "en:fairtrade-cocoa",
+        "en:fsc-mix"
+      ],
+      "product_name": "Шоколад 85% какаова маса"
+    },
+    {
+      "brands": "wasa",
+      "categories_tags": [
+        "en:plant-based-foods-and-beverages",
+        "en:plant-based-foods",
+        "en:snacks",
+        "en:cereals-and-potatoes",
+        "en:salty-snacks",
+        "en:appetizers",
+        "en:cereals-and-their-products",
+        "en:chips-and-fries",
+        "en:breads",
+        "en:crisps",
+        "en:crispbreads",
+        "en:extruded-crispbreads",
+        "en:crispbreads-wholemeal",
+        "en:extruded-and-grilled-crispbread"
+      ],
+      "code": "7300400481571",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/730/040/048/1571/front_fr.1746.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/730/040/048/1571/front_fr.1746.400.jpg",
+      "ingredients": [
+        {
+          "ciqual_food_code": "9530",
+          "ciqual_proxy_food_code": "9530",
+          "ecobalyse_code": "a2e25aca-1f42-4bc8-bc0e-4d7c751775aa",
+          "id": "en:wholemeal-rye-flour",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 103.37,
+          "quantity": "110 g",
+          "quantity_estimate": 103.37,
+          "quantity_g": 110,
+          "text": "Farine complète de SEIGLE",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "11058",
+          "id": "en:salt",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 0.99,
+          "quantity_estimate": 0.99,
+          "text": "sel",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        }
+      ],
+      "ingredients_analysis_tags": [
+        "en:palm-oil-free",
+        "en:vegan",
+        "en:vegetarian"
+      ],
+      "ingredients_text": "Farine complète de SEIGLE 110 g*, sel. *en g pour 100 g de produit. Peut contenir des traces de LUPIN, LAIT, MOUTARDE, GRAINES DE SÉSAME et SOJA.",
+      "labels_tags": [
+        "en:vegetarian",
+        "fr:triman",
+        "fr:Co2-compensated"
+      ],
+      "product_name": "wasa"
+    },
+    {
+      "brands": "Bjorg",
+      "categories_tags": [
+        "en:snacks",
+        "en:sweet-snacks",
+        "en:biscuits-and-cakes",
+        "en:biscuits-and-crackers",
+        "en:biscuits"
+      ],
+      "code": "3229820021027",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/322/982/002/1027/front_fr.262.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/322/982/002/1027/front_fr.262.400.jpg",
+      "ingredients": [
+        {
+          "ciqual_food_code": "9410",
+          "ciqual_proxy_food_code": "9410",
+          "ecobalyse_code": "a2e25aca-1f42-4bc8-bc0e-4d7c751775aa",
+          "id": "en:whole-wheat-flour",
+          "is_in_taxonomy": 1,
+          "origins": "en:france",
+          "percent": 76.8,
+          "percent_estimate": 76.81,
+          "quantity_estimate": 77.42,
+          "text": "Farine complète de blé",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "31016",
+          "ciqual_proxy_food_code": "31016",
+          "ecobalyse_code": "8f075c25-9ebf-430c-b41d-51d165c6e0d8",
+          "id": "en:unrefined-cane-sugar",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 18.41,
+          "quantity_estimate": 18.41,
+          "text": "Sucre de canne* roux",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "17130",
+          "ecobalyse_code": "96b301d9-d21b-4cea-8903-bd7917e95a30",
+          "from_palm_oil": "no",
+          "id": "en:colza-oil",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 8.79,
+          "quantity_estimate": 8.79,
+          "text": "Huile de colza",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "9510",
+          "ciqual_proxy_food_code": "9510",
+          "id": "en:wheat-starch",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 0,
+          "quantity_estimate": 0,
+          "text": "Amidon de blé",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "id": "en:raising-agent",
+          "ingredients": [
+            {
+              "id": "en:e503",
+              "is_in_taxonomy": 1,
+              "percent_estimate": 0,
+              "quantity_estimate": 0,
+              "text": "carbonates d'ammonium",
+              "vegan": "yes",
+              "vegetarian": "yes"
+            }
+          ],
+          "is_in_taxonomy": 1,
+          "percent_estimate": 0,
+          "quantity_estimate": 0,
+          "text": "Poudre à lever"
+        },
+        {
+          "ciqual_food_code": "11082",
+          "id": "en:sea-salt",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 0,
+          "quantity_estimate": 0,
+          "text": "Sel marin",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "id": "en:natural-vanilla-flavouring",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 0,
+          "quantity_estimate": 0,
+          "text": "Arôme naturel de vanille",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "id": "en:antioxidant",
+          "ingredients": [
+            {
+              "id": "en:e392",
+              "is_in_taxonomy": 1,
+              "percent_estimate": 0,
+              "quantity_estimate": 0,
+              "text": "extraits de romarin",
+              "vegan": "yes",
+              "vegetarian": "yes"
+            }
+          ],
+          "is_in_taxonomy": 1,
+          "percent_estimate": 0,
+          "quantity_estimate": 0,
+          "text": "Antioxydant"
+        }
+      ],
+      "ingredients_analysis_tags": [
+        "en:palm-oil-free",
+        "en:vegan",
+        "en:vegetarian"
+      ],
+      "ingredients_text": "Farine complète de blé* 76,8%, Sucre de canne* roux, Huile de colza*, Amidon de blé*, Poudre à lever (carbonates d'ammonium), Sel marin, Arôme naturel de vanille, Antioxydant (extraits de romarin).",
+      "labels_tags": [
+        "en:organic",
+        "en:certified-by-ecocert",
+        "en:eu-organic",
+        "en:source-of-fibre",
+        "en:certified-b-corporation",
+        "en:eu-agriculture",
+        "en:fr-bio-01",
+        "en:high-fibres",
+        "en:made-in-france",
+        "en:magnesium-source",
+        "en:no-palm-oil",
+        "en:nutriscore",
+        "en:nutriscore-grade-b",
+        "en:phosphore-source",
+        "fr:ab-agriculture-biologique",
+        "fr:ble-francais",
+        "fr:triman",
+        "fr:Au-ble-complet"
+      ],
+      "product_name": "P'tit Nature Complet"
+    },
+    {
+      "brands": "Lindt",
+      "categories_tags": [
+        "en:snacks",
+        "en:sweet-snacks",
+        "en:cocoa-and-its-products",
+        "en:chocolates",
+        "en:dark-chocolates",
+        "en:dark-chocolate-bar-with-more-than-70-cocoa",
+        "en:extra-fine-dark-chocolates"
+      ],
+      "code": "3046920028363",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/304/692/002/8363/front_en.500.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/304/692/002/8363/front_en.500.400.jpg",
+      "ingredients": [
+        {
+          "ciqual_food_code": "16030",
+          "ciqual_proxy_food_code": "16030",
+          "id": "en:cocoa-paste",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 25.65,
+          "quantity_estimate": 25.65,
+          "text": "Cacaomassa",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "18100",
+          "ciqual_proxy_food_code": "18100",
+          "id": "en:fat-reduced-cocoa",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 25.65,
+          "quantity_estimate": 25.65,
+          "text": "magere cacao",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "16030",
+          "ecobalyse_id": "0ea5f5a0-51d9-41da-9ac4-cb60f3ddb86c",
+          "ecobalyse_name": "Beurre de cacao par défaut -2025-",
+          "from_palm_oil": "no",
+          "id": "en:cocoa-butter",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 16.23,
+          "quantity_estimate": 16.23,
+          "text": "cacaoboter",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "31016",
+          "ciqual_proxy_food_code": "31016",
+          "ecobalyse_id": "5fc8032f-ca1c-4497-844b-f9213075eab3",
+          "ecobalyse_name": "Sucre de betterave par défaut -2025-",
+          "id": "en:muscovado",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 16.23,
+          "quantity_estimate": 16.23,
+          "text": "bruine suiker",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ecobalyse_id": "77dc04ff-6163-5b79-8657-381436135399",
+          "ecobalyse_name": "Extrait de vanille, alcoolique ou aqueux HORS UE",
+          "id": "en:vanilla",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 16.23,
+          "quantity_estimate": 16.23,
+          "text": "vanille",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        }
+      ],
+      "ingredients_analysis_tags": [
+        "en:palm-oil-free",
+        "en:vegan",
+        "en:vegetarian"
+      ],
+      "ingredients_text": "Cacaomassa, magere cacao, cacaoboter, bruine suiker, vanille.",
+      "labels_tags": [
+        "en:green-dot",
+        "en:made-in-france"
+      ],
+      "product_name": "Excellence 85% Cacao Rich Dark"
+    },
+    {
+      "brands": "",
+      "categories_tags": [
+        "en:snacks",
+        "en:sweet-snacks",
+        "en:cocoa-and-its-products",
+        "en:chocolates",
+        "en:dark-chocolates",
+        "en:extra-fine-dark-chocolates",
+        "en:Cacao-et-derives"
+      ],
+      "code": "20022464",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/000/002/002/2464/front_en.324.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/000/002/002/2464/front_en.324.400.jpg",
+      "ingredients": [
+        {
+          "ciqual_food_code": "16030",
+          "ciqual_proxy_food_code": "16030",
+          "id": "en:cocoa-paste",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 58.62,
+          "quantity_estimate": 58.62,
+          "text": "cocoa mass",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "31016",
+          "ciqual_proxy_food_code": "31016",
+          "ecobalyse_code": "5fc8032f-ca1c-4497-844b-f9213075eab3",
+          "id": "en:sugar",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 18.04,
+          "quantity_estimate": 18.04,
+          "text": "sugar",
+          "vegan": "maybe",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "16030",
+          "from_palm_oil": "no",
+          "id": "en:cocoa-butter",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 9.06,
+          "quantity_estimate": 9.06,
+          "text": "cocoa butter",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "18100",
+          "id": "en:fat-reduced-cocoa-powder",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 5.55,
+          "quantity_estimate": 5.55,
+          "text": "fat reduced cocoa powder",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "additive_class": "en:emulsifier",
+          "id": "en:e322",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 3.8,
+          "quantity_estimate": 3.8,
+          "text": "lecithins",
+          "vegan": "maybe",
+          "vegetarian": "maybe"
+        },
+        {
+          "id": "en:natural-vanilla-flavouring",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 2.79,
+          "quantity_estimate": 2.79,
+          "text": "natural vanilla flavouring",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_proxy_food_code": "31074",
+          "ecobalyse_code": "6f3939f7-408c-45d5-8653-61f3336bf305",
+          "id": "en:dark-chocolate",
+          "ingredients": [
+            {
+              "ciqual_food_code": "18100",
+              "ciqual_proxy_food_code": "18100",
+              "id": "en:cocoa-solids",
+              "is_in_taxonomy": 1,
+              "percent": 74,
+              "percent_estimate": 2.14,
+              "quantity_estimate": 2.14,
+              "text": "cocoa solids",
+              "vegan": "yes",
+              "vegetarian": "yes"
+            }
+          ],
+          "is_in_taxonomy": 1,
+          "percent_estimate": 2.14,
+          "quantity_estimate": 2.14,
+          "text": "dark chocolate contains",
+          "vegan": "maybe",
+          "vegetarian": "yes"
+        }
+      ],
+      "ingredients_analysis_tags": [
+        "en:palm-oil-free",
+        "en:vegan",
+        "en:vegetarian"
+      ],
+      "ingredients_text": "cocoa mass, sugar, cocoa butter, fat reduced cocoa powder, emulsifier: lecithins (soya), natural vanilla flavouring, dark chocolate contains: cocoa solids 74% minimum,",
+      "labels_tags": [
+        "en:fair-trade",
+        "en:vegetarian",
+        "en:fairtrade-international",
+        "en:rainforest-alliance",
+        "en:vegan",
+        "en:fairtrade-cocoa",
+        "en:pure-cocoa-butter",
+        "en:rainforest-alliance-cocoa",
+        "fr:triman",
+        "en:Commerce-equitable"
+      ],
+      "product_name": "Extra Dark 74% Cocoa"
+    },
+    {
+      "brands": "Lindt",
+      "categories_tags": [
+        "en:snacks",
+        "en:sweet-snacks",
+        "en:cocoa-and-its-products",
+        "en:chocolates",
+        "en:dark-chocolates",
+        "en:Chocolates negros"
+      ],
+      "code": "3046920028004",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/304/692/002/8004/front_en.435.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/304/692/002/8004/front_en.435.400.jpg",
+      "ingredients": [
+        {
+          "ciqual_food_code": "16030",
+          "ciqual_proxy_food_code": "16030",
+          "id": "en:cocoa-paste",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 64.23,
+          "quantity_estimate": 64.23,
+          "text": "Cacaomassa",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "31016",
+          "ciqual_proxy_food_code": "31016",
+          "ecobalyse_id": "5fc8032f-ca1c-4497-844b-f9213075eab3",
+          "ecobalyse_name": "Sucre de betterave par défaut -2025-",
+          "id": "en:sugar",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 19.77,
+          "quantity_estimate": 19.77,
+          "text": "suiker",
+          "vegan": "maybe",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "16030",
+          "ecobalyse_id": "0ea5f5a0-51d9-41da-9ac4-cb60f3ddb86c",
+          "ecobalyse_name": "Beurre de cacao par défaut -2025-",
+          "from_palm_oil": "no",
+          "id": "en:cocoa-butter",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 9.92,
+          "quantity_estimate": 9.92,
+          "text": "cacaoboter",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ecobalyse_id": "77dc04ff-6163-5b79-8657-381436135399",
+          "ecobalyse_name": "Extrait de vanille, alcoolique ou aqueux HORS UE",
+          "id": "en:vanilla",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 6.08,
+          "quantity_estimate": 6.08,
+          "text": "vanille",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        }
+      ],
+      "ingredients_analysis_tags": [
+        "en:palm-oil-free",
+        "en:vegan",
+        "en:vegetarian"
+      ],
+      "ingredients_text": "Cacaomassa, suiker, cacaoboter, vanille.",
+      "labels_tags": [
+        "en:vegetarian",
+        "en:vegan",
+        "en:green-dot",
+        "en:made-in-france"
+      ],
+      "product_name": "Excellence 70% Cocoa Intense Dark"
+    },
+    {
+      "brands": "Tyrrells",
+      "categories_tags": [
+        "en:plant-based-foods-and-beverages",
+        "en:plant-based-foods",
+        "en:snacks",
+        "en:cereals-and-potatoes",
+        "en:salty-snacks",
+        "en:appetizers",
+        "en:chips-and-fries",
+        "en:potatoes-and-their-products",
+        "en:crisps",
+        "en:salty-snacks-made-from-potato",
+        "en:potato-crisps",
+        "en:potato-crisps-with-salt",
+        "en:potato-crisps-with-sea-salt"
+      ],
+      "code": "5060042641000",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/506/004/264/1000/front_en.295.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/506/004/264/1000/front_en.295.400.jpg",
+      "ingredients": [
+        {
+          "ciqual_food_code": "4003",
+          "ciqual_proxy_food_code": "4003",
+          "ecobalyse_code": "potato-industry-fr",
+          "id": "en:potato",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 281.26,
+          "quantity_estimate": 281.26,
+          "text": "Potatoes",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "17001",
+          "from_palm_oil": "maybe",
+          "id": "en:vegetable-oil",
+          "ingredients": [
+            {
+              "ciqual_food_code": "17440",
+              "ecobalyse_code": "3cfab110-363e-442a-9170-1af337fe9ea3",
+              "from_palm_oil": "no",
+              "id": "en:sunflower-oil",
+              "is_in_taxonomy": 1,
+              "percent_estimate": 13.78,
+              "quantity_estimate": 13.78,
+              "text": "sunflower vegetable oils",
+              "vegan": "yes",
+              "vegetarian": "yes"
+            },
+            {
+              "ciqual_food_code": "17130",
+              "ecobalyse_code": "96b301d9-d21b-4cea-8903-bd7917e95a30",
+              "from_palm_oil": "no",
+              "id": "en:rapeseed-oil",
+              "is_in_taxonomy": 1,
+              "percent_estimate": 13.78,
+              "quantity_estimate": 13.78,
+              "text": "rapeseed vegetable oils",
+              "vegan": "yes",
+              "vegetarian": "yes"
+            }
+          ],
+          "is_in_taxonomy": 1,
+          "percent_estimate": 27.57,
+          "quantity_estimate": 27.57,
+          "text": "vegetable oils",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "11082",
+          "id": "en:sea-salt",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 0,
+          "quantity_estimate": 0,
+          "text": "sea salt",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        }
+      ],
+      "ingredients_analysis_tags": [
+        "en:palm-oil-free",
+        "en:vegan",
+        "en:vegetarian"
+      ],
+      "ingredients_text": "Potatoes, vegetable oils (sunflower, rapeseed in varying proportions), sea salt. May contain MILK. Packaged in a protective atmosphere.",
+      "labels_tags": [
+        "en:vegetarian",
+        "en:no-gluten",
+        "en:no-artificial-flavors",
+        "en:vegan",
+        "en:assured-food-standards",
+        "en:green-dot",
+        "en:no-artificial-colors",
+        "en:no-flavour-enhancer",
+        "en:no-msg",
+        "fr:triman",
+        "en:Made-in-england",
+        "en:Terracycle"
+      ],
+      "product_name": "Lightly sea salted crisps"
+    },
+    {
+      "brands": "NATURENVIE",
+      "categories_tags": [
+        "en:plant-based-foods-and-beverages",
+        "en:plant-based-foods",
+        "en:snacks",
+        "en:cereals-and-potatoes",
+        "en:specific-products",
+        "en:products-for-specific-diets",
+        "en:products-without-gluten",
+        "en:extruded-crispbreads"
+      ],
+      "code": "3760020508012",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/376/002/050/8012/front_fr.198.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/376/002/050/8012/front_fr.198.400.jpg",
+      "ingredients": [
+        {
+          "ciqual_food_code": "9540",
+          "ecobalyse_code": "db791ac8-02b9-41b0-bc2b-2913e745bd19",
+          "id": "en:buckwheat-flour",
+          "is_in_taxonomy": 1,
+          "labels": "en:organic",
+          "percent": 80,
+          "percent_estimate": 80,
+          "percent_max": 80,
+          "percent_min": 80,
+          "text": "Farine de sarrasin",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "9520",
+          "ecobalyse_code": "db791ac8-02b9-41b0-bc2b-2913e745bd19",
+          "id": "en:rice-flour",
+          "is_in_taxonomy": 1,
+          "labels": "en:organic",
+          "percent_estimate": 19.715,
+          "percent_max": 20,
+          "percent_min": 19.43,
+          "text": "farine de riz",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "11082",
+          "id": "en:sea-salt",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 0.284999999999997,
+          "percent_max": 0.569999999999993,
+          "percent_min": 0,
+          "text": "sel marin",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        }
+      ],
+      "ingredients_analysis_tags": [
+        "en:palm-oil-free",
+        "en:vegan",
+        "en:vegetarian"
+      ],
+      "ingredients_text": "Farine de sarrasin* 80 %, farine de riz*, sel marin.\r\n*Produits issus de l'agriculture biologique.",
+      "labels_tags": [
+        "en:no-gluten",
+        "en:organic",
+        "en:crossed-grain-trademark",
+        "en:eu-organic",
+        "en:1-for-the-planet",
+        "en:dzg-gluten-free",
+        "en:eu-agriculture",
+        "en:fr-bio-01",
+        "en:green-dot",
+        "en:made-in-france",
+        "en:no-added-sugar",
+        "en:no-palm-oil",
+        "en:nutriscore",
+        "en:nutriscore-grade-a",
+        "fr:ab-agriculture-biologique",
+        "fr:triman"
+      ],
+      "product_name": "Tartines craquantes Sarrasin"
+    },
+    {
+      "brands": "J. D. Gross (Lidl)",
+      "categories_tags": [
+        "en:snacks",
+        "en:sweet-snacks",
+        "en:cocoa-and-its-products",
+        "en:chocolates",
+        "en:dark-chocolates",
+        "en:dark-chocolate-bar-with-more-than-70-cocoa"
+      ],
+      "code": "20095291",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/000/002/009/5291/front_en.270.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/000/002/009/5291/front_en.270.400.jpg",
+      "ingredients": [
+        {
+          "ciqual_food_code": "16030",
+          "ciqual_proxy_food_code": "16030",
+          "id": "en:cocoa-paste",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 63.6,
+          "quantity_estimate": 63.6,
+          "text": "Massa di cacao",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "31016",
+          "ciqual_proxy_food_code": "31016",
+          "ecobalyse_code": "5fc8032f-ca1c-4497-844b-f9213075eab3",
+          "id": "en:sugar",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 20.92,
+          "quantity_estimate": 20.92,
+          "text": "zucchero",
+          "vegan": "maybe",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "16030",
+          "from_palm_oil": "no",
+          "id": "en:cocoa-butter",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 11.47,
+          "quantity_estimate": 11.47,
+          "text": "burro di cacao",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "additive_class": "en:emulsifier",
+          "id": "en:e322",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 2,
+          "quantity_estimate": 2,
+          "text": "lecitine",
+          "vegan": "maybe",
+          "vegetarian": "maybe"
+        },
+        {
+          "ciqual_food_code": "11065",
+          "ciqual_proxy_food_code": "11065",
+          "id": "en:vanilla-extract",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 2,
+          "quantity_estimate": 2,
+          "text": "estratto di vaniglia",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        }
+      ],
+      "ingredients_analysis_tags": [
+        "en:palm-oil-free",
+        "en:vegan",
+        "en:vegetarian"
+      ],
+      "ingredients_text": "Massa di cacao, zucchero, burro di cacao, emulsionante: lecitine (soia); estratto di vaniglia",
+      "labels_tags": [
+        "en:fair-trade",
+        "en:vegetarian",
+        "en:european-vegetarian-union",
+        "en:fsc",
+        "en:nutriscore",
+        "en:vegan",
+        "en:european-vegetarian-union-vegan",
+        "en:fairtrade-cocoa",
+        "en:fsc-mix",
+        "en:green-dot",
+        "en:pure-cocoa-butter"
+      ],
+      "product_name": "Cioccolato fondente"
+    },
+    {
+      "brands": "LINDT SPRUNGLI SAS",
+      "categories_tags": [
+        "en:snacks",
+        "en:sweet-snacks",
+        "en:cocoa-and-its-products",
+        "en:chocolates",
+        "en:dark-chocolates",
+        "en:dark-chocolate-bar-with-more-than-70-cocoa"
+      ],
+      "code": "3046920028721",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/304/692/002/8721/front_en.295.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/304/692/002/8721/front_en.295.400.jpg",
+      "ingredients": [
+        {
+          "ciqual_food_code": "18100",
+          "ciqual_proxy_food_code": "18100",
+          "id": "en:cocoa-solids",
+          "is_in_taxonomy": 1,
+          "percent": 99,
+          "percent_estimate": 98.5,
+          "quantity_estimate": 98.5,
+          "text": "Cocoa solids",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "16030",
+          "ciqual_proxy_food_code": "16030",
+          "id": "en:cocoa-paste",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 4.95,
+          "quantity_estimate": 4.95,
+          "text": "cocoa paste",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "18100",
+          "ciqual_proxy_food_code": "18100",
+          "id": "en:fat-reduced-cocoa",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 0,
+          "quantity_estimate": 0,
+          "text": "fat-reduced cocoa",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "16030",
+          "from_palm_oil": "no",
+          "id": "en:cocoa-butter",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 0,
+          "quantity_estimate": 0,
+          "text": "cocoa butter",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        },
+        {
+          "ciqual_food_code": "31016",
+          "ciqual_proxy_food_code": "31016",
+          "ecobalyse_code": "5fc8032f-ca1c-4497-844b-f9213075eab3",
+          "id": "en:demerara-sugar",
+          "is_in_taxonomy": 1,
+          "percent_estimate": 0,
+          "quantity_estimate": 0,
+          "text": "demerara sugar",
+          "vegan": "yes",
+          "vegetarian": "yes"
+        }
+      ],
+      "ingredients_analysis_tags": [
+        "en:palm-oil-free",
+        "en:vegan",
+        "en:vegetarian"
+      ],
+      "ingredients_text": "Cocoa solids 99%, cocoa paste, fat-reduced cocoa, cocoa butter, demerara sugar. May contain nuts, milk and soya,",
+      "labels_tags": [
+        "en:eac",
+        "en:green-dot",
+        "en:made-in-france",
+        "en:pure-cocoa-butter",
+        "fr:triman",
+        "de:groene-punt"
+      ],
+      "product_name": "Dark absolute 99% cacao"
+    }
+  ],
+  "skip": 0
+}

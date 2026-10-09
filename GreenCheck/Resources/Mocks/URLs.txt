@@ -1,0 +1,5 @@
+Single Product Search:
+https://world.openfoodfacts.org/api/v2/product/016000264601.json?fields=code,product_name,brands,image_url,image_front_url,ingredients_analysis_tags,ingredients,ingredients_text,categories_tags,labels_tags
+
+Alternate Suggtions:
+https://world.openfoodfacts.org/api/v2/search?categories_tags_en=en:snacks&ingredients_analysis_tags=en:vegan&page_size=15&fields=code,product_name,brands,image_url,image_front_url,ingredients_analysis_tags,ingredients,ingredients_text,categories_tags,labels_tags
