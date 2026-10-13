@@ -3,8 +3,7 @@ import SwiftUI
 struct UsageSheetView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var quotaManager = QuotaManager.shared
-    @State private var showPrivacySheet = false
-
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -60,39 +59,12 @@ struct UsageSheetView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(Color(uiColor: .secondarySystemBackground))
                     .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-
-                    // Transparency Sheet Trigger
-                    Button {
-                        showPrivacySheet = true
-                    } label: {
-                        Label("Data & Privacy Transparency", systemImage: "shield.pattern.checkered")
-                            .font(.headline)
-                            .fontWeight(.semibold)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 10)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(AppColors.primary)
-                    .padding(.top, 8)
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 16)
                 .padding(.bottom, 24)
             }
             .background(Color(uiColor: .systemBackground))
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") {
-                        dismiss()
-                    }
-                    .fontWeight(.semibold)
-                }
-            }
-            .sheet(isPresented: $showPrivacySheet) {
-                PrivacyAndTransparencyView()
-                    .presentationDetents([.large])
-                    .presentationDragIndicator(.visible)
-            }
         }
     }
 }

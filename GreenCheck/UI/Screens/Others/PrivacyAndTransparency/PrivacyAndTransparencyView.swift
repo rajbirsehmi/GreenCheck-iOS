@@ -12,6 +12,14 @@ struct PrivacyAndTransparencyView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     // Feature Items List
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Privacy & Transparency")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundStyle(Color.primary)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    
                     VStack(alignment: .leading, spacing: 20) {
                         PrivacyAndTransparencyFeatureRow(
                             icon: "dollarsign.circle.fill",
@@ -80,17 +88,7 @@ struct PrivacyAndTransparencyView: View {
                 .padding(.top, 16)
                 .padding(.bottom, 24)
             }
-            .navigationTitle("Privacy & Transparency")
-            .navigationBarTitleDisplayMode(.inline)
             .background(Color(uiColor: .systemBackground))
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") {
-                        dismiss()
-                    }
-                    .fontWeight(.semibold)
-                }
-            }
         }
     }
 }

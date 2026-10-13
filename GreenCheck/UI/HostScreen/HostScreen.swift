@@ -4,6 +4,7 @@ import SwiftData
 struct HostScreen: View {
     @State private var selectedTab: Int = 0
     @State private var usageInfoSheet = false
+    @State private var showPrivacySheet = false
     
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding: Bool = false
     @State private var showWelcomeSheet: Bool = false
@@ -41,14 +42,24 @@ struct HostScreen: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
+                        showPrivacySheet = true
+                    } label: {
+                        Image(systemName: "shield.pattern.checkered")
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
                         usageInfoSheet = true
                     } label: {
-                        Image(systemName: "info.circle")
+                        Image(systemName: "chart.bar.xaxis")
                     }
                 }
             }
             .sheet(isPresented: $usageInfoSheet) {
                 UsageSheetView()
+            }
+            .sheet(isPresented: $showPrivacySheet) {
+                PrivacyAndTransparencyView()
             }
             .sheet(isPresented: $showWelcomeSheet, onDismiss: {
                 hasCompletedOnboarding = true
