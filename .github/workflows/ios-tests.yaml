@@ -15,6 +15,20 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Boot iOS Simulator
+        run: |
+          echo "Looking for available iPhone simulators..."
+          SIM_UDID=$(xcrun simctl list devices available | grep -m 1 "iPhone" | grep -oE '[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}')
+          if [ -n "$SIM_UDID" ]; then
+            echo "Booting existing simulator: $SIM_UDID"
+            xcrun simctl boot "$SIM_UDID" || true
+          else
+            echo "Creating and booting a new iPhone 16 simulator..."
+            RUNTIME=$(xcrun simctl list runtimes | grep -E "iOS" | tail -n 1 | awk '{print $NF}')
+            DEVICE_ID=$(xcrun simctl create "iPhone 16" com.apple.CoreSimulator.SimDeviceType.iPhone-16 "$RUNTIME")
+            xcrun simctl boot "$DEVICE_ID"
+          end
+
       - name: Run Unit Tests (GreenCheckTests)
         env:
           NSUnbufferedIO: "YES"
@@ -22,7 +36,7 @@ jobs:
           xcodebuild test \
             -project GreenCheck.xcodeproj \
             -scheme GreenCheck \
-            -destination "platform=iOS Simulator,name=Any iOS Simulator Device" \
+            -destination "platform=iOS Simulator,name=iPhone 16" \
             -only-testing:GreenCheckTests \
             clean test
 
@@ -33,6 +47,6 @@ jobs:
           xcodebuild test \
             -project GreenCheck.xcodeproj \
             -scheme GreenCheck \
-            -destination "platform=iOS Simulator,name=Any iOS Simulator Device" \
+            -destination "platform=iOS Simulator,name=iPhone 16" \
             -only-testing:GreenCheckUITests \
             test
