@@ -1,20 +1,20 @@
 name: iOS CI & Full Test Suite
- 
+
 on:
   push:
     branches: [ "main", "master", "develop", "testing" ]
   pull_request:
     branches: [ "main", "master", "develop", "testing" ]
- 
+
 jobs:
   test-ios:
     name: Build & Run Unit and UI Tests
     runs-on: xcode-27  # Hosted image with Xcode 27 (preview) and the iOS 27 simulator runtime
- 
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
- 
+
       - name: Select newest Xcode
         run: |
           # No beta filter: Xcode 27 is a preview image and its folder may be named beta
@@ -22,12 +22,7 @@ jobs:
           echo "Selecting $XCODE"
           sudo xcode-select -s "$XCODE/Contents/Developer"
           xcodebuild -version
- 
-      - name: Show runtimes and available iPhones
-        run: |
-          xcrun simctl list runtimes
-          xcrun simctl list devices available | grep -E "^-- |iPhone"
- 
+
       - name: Select an iPhone simulator
         run: |
           # Newest iOS runtime; prefer "iPhone 16", otherwise any iPhone on that runtime
@@ -38,22 +33,21 @@ jobs:
               | select(.name | startswith("iPhone")) ] as $phones
             | ([ $phones[] | select(.name == "iPhone 16") ] + $phones)
             | first | .udid // empty') || true
- 
+
           if [ -z "$UDID" ]; then
             echo "No iPhone simulator found on an iOS runtime. Available devices:"
             xcrun simctl list devices available
             exit 1
           fi
- 
+
           echo "Using simulator: $UDID"
           echo "SIM_UDID=$UDID" >> "$GITHUB_ENV"
           xcrun simctl boot "$UDID" || true
           xcrun simctl bootstatus "$UDID" -b
- 
-      - name: Diagnose destinations
-        run: |
-          xcodebuild -project GreenCheck.xcodeproj -scheme GreenCheck -showdestinations
- 
+
+      - name: Prepare results folder
+        run: mkdir -p TestResults
+
       - name: Run Unit Tests (GreenCheckTests)
         env:
           NSUnbufferedIO: "YES"
@@ -62,9 +56,11 @@ jobs:
             -project GreenCheck.xcodeproj \
             -scheme GreenCheck \
             -destination "platform=iOS Simulator,id=$SIM_UDID" \
-            -only-testing:GreenCheckTests
- 
+            -only-testing:GreenCheckTests \
+            -resultBundlePath TestResults/unit.xcresult
+
       - name: Run UI Tests (GreenCheckUITests)
+        if: ${{ !cancelled() }}  # run even if unit tests failed, so we get both reports
         env:
           NSUnbufferedIO: "YES"
         run: |
@@ -72,4 +68,40 @@ jobs:
             -project GreenCheck.xcodeproj \
             -scheme GreenCheck \
             -destination "platform=iOS Simulator,id=$SIM_UDID" \
-            -only-testing:GreenCheckUITests
+            -only-testing:GreenCheckUITests \
+            -resultBundlePath TestResults/ui.xcresult \
+            -collect-test-diagnostics never
+
+      - name: Extract reports from result bundles
+        if: ${{ !cancelled() }}
+        run: |
+          for NAME in unit ui; do
+            BUNDLE="TestResults/$NAME.xcresult"
+            [ -d "$BUNDLE" ] || { echo "No $BUNDLE, skipping"; continue; }
+
+            # Machine-readable summary and per-test results
+            xcrun xcresulttool get test-results summary --path "$BUNDLE" --compact > "TestResults/$NAME-summary.json" || true
+            xcrun xcresulttool get test-results tests   --path "$BUNDLE" --compact > "TestResults/$NAME-tests.json"   || true
+
+            # Screenshots and attachments from failed tests only
+            mkdir -p "TestResults/$NAME-attachments"
+            xcrun xcresulttool export attachments --path "$BUNDLE" \
+              --output-path "TestResults/$NAME-attachments" --only-failures || true
+
+            # Short failure list on the workflow run page
+            {
+              echo "### $NAME tests"
+              jq -r '"Result: \(.result // "unknown") | passed: \(.passedTests // 0) | failed: \(.failedTests // 0) | skipped: \(.skippedTests // 0)"' "TestResults/$NAME-summary.json" || true
+              echo
+              jq -r '.testFailures[]? | "- **\(.testName)**: \(.failureText)"' "TestResults/$NAME-summary.json" || true
+              echo
+            } >> "$GITHUB_STEP_SUMMARY"
+          done
+
+      - name: Upload test reports
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: TestResults/
+          retention-days: 14
