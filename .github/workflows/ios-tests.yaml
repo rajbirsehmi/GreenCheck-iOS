@@ -1,66 +1,59 @@
 name: iOS CI & Full Test Suite
-
+ 
 on:
   push:
     branches: [ "main", "master", "develop", "testing" ]
   pull_request:
     branches: [ "main", "master", "develop", "testing" ]
-
+ 
 jobs:
   test-ios:
     name: Build & Run Unit and UI Tests
-    runs-on: macos-15
-
+    runs-on: xcode-27  # Hosted image with Xcode 27 (preview) and the iOS 27 simulator runtime
+ 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Select newest stable Xcode
+ 
+      - name: Select newest Xcode
         run: |
-          XCODE=$(ls -d /Applications/Xcode_*.app | grep -vi beta | sort -V | tail -1)
+          # No beta filter: Xcode 27 is a preview image and its folder may be named beta
+          XCODE=$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)
           echo "Selecting $XCODE"
           sudo xcode-select -s "$XCODE/Contents/Developer"
           xcodebuild -version
-
-      - name: Prepare Xcode and CoreSimulator
+ 
+      - name: Show runtimes and available iPhones
         run: |
-          sudo xcodebuild -runFirstLaunch
-          xcrun simctl shutdown all || true
-          sudo killall -9 com.apple.CoreSimulator.CoreSimulatorService || true
-          sleep 5
-          xcrun simctl list devices available | head -20
-
-      - name: Ensure iOS platform is installed
+          xcrun simctl list runtimes
+          xcrun simctl list devices available | grep -E "^-- |iPhone"
+ 
+      - name: Select an iPhone simulator
         run: |
-          xcodebuild -showsdks | grep -i "iOS Simulator" || {
-            echo "No iOS Simulator SDK visible, downloading platform..."
-            xcodebuild -downloadPlatform iOS
-          }
-
-      - name: Diagnose destinations
-        run: |
-          xcodebuild -showsdks
-          xcodebuild -project GreenCheck.xcodeproj -scheme GreenCheck -showdestinations
-          xcodebuild -project GreenCheck.xcodeproj -scheme GreenCheck -showBuildSettings \
-            | grep -E "IPHONEOS_DEPLOYMENT_TARGET|SUPPORTED_PLATFORMS|SDKROOT" || true
-
-      - name: Select an iPhone 16 simulator
-        run: |
+          # Newest iOS runtime; prefer "iPhone 16", otherwise any iPhone on that runtime
           UDID=$(xcrun simctl list devices available -j | jq -r '
-            [ .devices | to_entries | sort_by(.key)[]
-              | select(.key | contains("SimRuntime.iOS"))
-              | .value[]
-              | select(.name == "iPhone 16") ]
-            | last | .udid // empty')
+            [ .devices | to_entries
+              | map(select(.key | contains("SimRuntime.iOS")))
+              | sort_by(.key) | last | .value[]
+              | select(.name | startswith("iPhone")) ] as $phones
+            | ([ $phones[] | select(.name == "iPhone 16") ] + $phones)
+            | first | .udid // empty') || true
+ 
           if [ -z "$UDID" ]; then
-            echo "No iPhone 16 simulator found."
+            echo "No iPhone simulator found on an iOS runtime. Available devices:"
+            xcrun simctl list devices available
             exit 1
           fi
+ 
           echo "Using simulator: $UDID"
           echo "SIM_UDID=$UDID" >> "$GITHUB_ENV"
           xcrun simctl boot "$UDID" || true
           xcrun simctl bootstatus "$UDID" -b
-
+ 
+      - name: Diagnose destinations
+        run: |
+          xcodebuild -project GreenCheck.xcodeproj -scheme GreenCheck -showdestinations
+ 
       - name: Run Unit Tests (GreenCheckTests)
         env:
           NSUnbufferedIO: "YES"
@@ -70,7 +63,7 @@ jobs:
             -scheme GreenCheck \
             -destination "platform=iOS Simulator,id=$SIM_UDID" \
             -only-testing:GreenCheckTests
-
+ 
       - name: Run UI Tests (GreenCheckUITests)
         env:
           NSUnbufferedIO: "YES"
