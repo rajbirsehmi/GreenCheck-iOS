@@ -15,9 +15,10 @@ struct ScannerView: View {
             if let viewModel = viewModel {
                 if !viewModel.cameraPermissionGranted {
                     permissionDeniedView
+                        .accessibilityIdentifier("scanner_permissionDeniedView")
                 } else if !quotaManager.canScan {
-                    // Camera session is not instantiated when quota is exhausted
                     quotaDepletedCameraView
+                        .accessibilityIdentifier("scanner_quotaDepletedView")
                 } else {
                     ZStack {
                         ScannerPreviewView { barcode in
@@ -26,6 +27,7 @@ struct ScannerView: View {
                             }
                         }
                         .ignoresSafeArea()
+                        .accessibilityIdentifier("scanner_previewView")
 
                         viewfinderOverlay
 
@@ -63,13 +65,6 @@ struct ScannerView: View {
                 viewModel?.resetScanner()
             }
         }
-//        .alert("Quota Depleted for Today", isPresented: $showQuotaAlert) {
-//            Button("OK", role: .cancel) {
-//                selectedTab = 0 // Navigate back to Home
-//            }
-//        } message: {
-//            Text("You've reached your daily limit of 10 scanner lookups. Your limit will refresh tonight at midnight.")
-//        }
     }
 }
 
@@ -100,6 +95,8 @@ private extension ScannerView {
             }
             .ignoresSafeArea()
         }
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("scanner_viewfinderOverlay")
     }
 
     func topControlsBar(viewModel: ScannerViewModel) -> some View {
@@ -109,6 +106,7 @@ private extension ScannerView {
                 limit: quotaManager.dailyLimit,
                 icon: "barcode.viewfinder"
             )
+            .accessibilityIdentifier("scanner_quotaBadge")
 
             Spacer()
             
@@ -123,6 +121,7 @@ private extension ScannerView {
                     .background(.ultraThinMaterial)
                     .clipShape(Circle())
             }
+            .accessibilityIdentifier("scanner_button_toggleTorch")
         }
     }
 
@@ -137,17 +136,20 @@ private extension ScannerView {
                         .fontWeight(.medium)
                         .foregroundStyle(.white)
                 }
+                .accessibilityIdentifier("scanner_loadingState")
             } else if let errorMsg = viewModel.errorMessage {
                 Text(errorMsg)
                     .font(.caption)
                     .fontWeight(.medium)
                     .foregroundStyle(AppColors.error)
                     .multilineTextAlignment(.center)
+                    .accessibilityIdentifier("scanner_errorMessage")
             } else {
                 Text("Align barcode within the viewfinder frame")
                     .font(.subheadline)
                     .fontWeight(.medium)
                     .foregroundStyle(.white)
+                    .accessibilityIdentifier("scanner_instructionsText")
             }
         }
         .padding(.horizontal, 20)
@@ -193,6 +195,7 @@ private extension ScannerView {
                     .background(AppColors.primary)
                     .clipShape(AppShapes.medium)
             }
+            .accessibilityIdentifier("scanner_button_returnHome")
             .padding(.horizontal, 32)
         }
     }
@@ -235,6 +238,7 @@ private extension ScannerView {
                     .background(AppColors.primary)
                     .clipShape(AppShapes.medium)
             }
+            .accessibilityIdentifier("scanner_button_openSettings")
             .padding(.horizontal, 32)
         }
     }
@@ -277,5 +281,6 @@ struct QuotaBadgeView: View {
         .padding(.vertical, 6)
         .background(.ultraThinMaterial)
         .clipShape(Capsule())
+        .accessibilityElement(children: .combine)
     }
 }

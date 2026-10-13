@@ -25,11 +25,13 @@ struct ProductView: View {
                         .font(.title3)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
+                        .accessibilityIdentifier("product_titleText")
 
                     Text(product.brand.uppercased())
                         .font(.caption)
                         .fontWeight(.semibold)
                         .foregroundStyle(AppColors.onSurfaceVariant)
+                        .accessibilityIdentifier("product_brandText")
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 8)
@@ -45,13 +47,16 @@ struct ProductView: View {
                     VStack(alignment: .leading, spacing: 2) {
                         Text(statusTitle(for: product.veganStatus))
                             .font(.headline)
+                            .accessibilityIdentifier("product_statusTitle")
                         Text("UPC: \(product.id)")
                             .font(.caption)
                             .foregroundStyle(AppColors.onSurfaceVariant)
+                            .accessibilityIdentifier("product_upcText")
                     }
                 }
                 .padding(.vertical, 4)
             }
+            .accessibilityIdentifier("product_section_status")
 
             // Alternate Suggestion Section (Only shown if status is NOT verified vegan)
             if product.veganStatus != .yes {
@@ -59,6 +64,7 @@ struct ProductView: View {
                     alternativesContent
                 }
                 .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+                .accessibilityIdentifier("product_section_alternatives")
             }
 
             // 1. Ingredient Analysis Section
@@ -79,6 +85,7 @@ struct ProductView: View {
                                     .foregroundStyle(AppColors.veganStatusGreen)
                             }
                         }
+                        .accessibilityIdentifier("product_disclosure_veganFriendly")
                     }
 
                     // 1b. Uncertain Source
@@ -96,6 +103,7 @@ struct ProductView: View {
                                     .foregroundStyle(AppColors.uncertainStatusYellow)
                             }
                         }
+                        .accessibilityIdentifier("product_disclosure_uncertainSource")
                     }
 
                     // 1c. Non-Vegan Detected
@@ -113,8 +121,10 @@ struct ProductView: View {
                                     .foregroundStyle(AppColors.nonVeganStatusRed)
                             }
                         }
+                        .accessibilityIdentifier("product_disclosure_nonVegan")
                     }
                 }
+                .accessibilityIdentifier("product_section_ingredientAnalysis")
 
                 // 2. Ingredient Breakdown Section
                 Section("Ingredient Breakdown") {
@@ -138,6 +148,7 @@ struct ProductView: View {
                         }
                     }
                 }
+                .accessibilityIdentifier("product_section_ingredientBreakdown")
             }
 
             // 3. Collapsible Full Ingredient List Section
@@ -164,6 +175,7 @@ struct ProductView: View {
                                 .foregroundStyle(Color.primary)
                         }
                     }
+                    .accessibilityIdentifier("product_disclosure_fullIngredientList")
                 }
             }
         }
@@ -181,7 +193,6 @@ struct ProductView: View {
 // MARK: - Subviews & Helpers
 private extension ProductView {
 
-    /// Parses comma-separated `ingredientsText` into clean, capitalized individual strings
     var parsedIngredientsList: [String] {
         guard !product.ingredientsText.isEmpty else { return [] }
         
@@ -205,6 +216,7 @@ private extension ProductView {
                     Spacer()
                 }
                 .padding(.vertical, 16)
+                .accessibilityIdentifier("product_alternatives_loading")
             } else if !viewModel.alternativeProducts.isEmpty {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
@@ -213,17 +225,20 @@ private extension ProductView {
                                 AlternativeCard(product: altProduct)
                             }
                             .buttonStyle(.plain)
+                            .accessibilityIdentifier("product_alternativeCard_\(altProduct.id)")
                         }
                     }
                     .padding(.horizontal, 16)
                     .padding(.vertical, 4)
                 }
+                .accessibilityIdentifier("product_alternatives_carousel")
             } else if let errorMsg = viewModel.alternativeError {
                 VStack(spacing: 8) {
                     Text(errorMsg)
                         .font(.footnote)
                         .foregroundStyle(AppColors.onSurfaceVariant)
                         .multilineTextAlignment(.center)
+                        .accessibilityIdentifier("product_alternatives_errorText")
 
                     Button("Find Alternatives") {
                         Task {
@@ -234,6 +249,7 @@ private extension ProductView {
                     .fontWeight(.semibold)
                     .buttonStyle(.borderedProminent)
                     .tint(AppColors.primary)
+                    .accessibilityIdentifier("product_button_retryAlternatives")
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 8)
@@ -252,6 +268,7 @@ private extension ProductView {
                     }
                 }
                 .padding(.vertical, 4)
+                .accessibilityIdentifier("product_button_findAlternatives")
             }
         }
     }

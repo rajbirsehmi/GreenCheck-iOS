@@ -12,6 +12,7 @@ struct HomeView: View {
                         .frame(width: 72, height: 72)
                         .clipShape(AppShapes.large)
                         .shadow(color: Color.black.opacity(0.06), radius: 8, x: 0, y: 3)
+                        .accessibilityIdentifier("home_logoImage")
 
                     Text("Discover Conscious Eating")
                         .font(.title2)
@@ -36,6 +37,7 @@ struct HomeView: View {
                     icon: "keyboard",
                     iconColor: .blue
                 )
+                .accessibilityIdentifier("home_feature_manual")
                 
                 FeatureRow(
                     title: "Scan History",
@@ -43,6 +45,7 @@ struct HomeView: View {
                     icon: "clock.fill",
                     iconColor: .orange
                 )
+                .accessibilityIdentifier("home_feature_history")
 
                 FeatureRow(
                     title: "Camera Scanner",
@@ -50,6 +53,7 @@ struct HomeView: View {
                     icon: "barcode.viewfinder",
                     iconColor: .green
                 )
+                .accessibilityIdentifier("home_feature_scanner")
             }
 
             // How It Works

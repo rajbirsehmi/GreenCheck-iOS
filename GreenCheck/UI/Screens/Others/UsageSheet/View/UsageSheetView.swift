@@ -8,7 +8,6 @@ struct UsageSheetView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 24) {
-                    // Header Description
                     VStack(alignment: .leading, spacing: 8) {
                         Text("API Usage & Limits")
                             .font(.title2)
@@ -21,7 +20,6 @@ struct UsageSheetView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                    // Progress Cards
                     VStack(spacing: 16) {
                         QuotaProgressCard(
                             title: "Scanner Lookups",
@@ -29,6 +27,7 @@ struct UsageSheetView: View {
                             current: quotaManager.scannerCount,
                             limit: quotaManager.dailyLimit
                         )
+                        .accessibilityIdentifier("usage_card_scannerLookups")
 
                         QuotaProgressCard(
                             title: "Manual Lookups",
@@ -36,9 +35,9 @@ struct UsageSheetView: View {
                             current: quotaManager.manualCount,
                             limit: quotaManager.dailyLimit
                         )
+                        .accessibilityIdentifier("usage_card_manualLookups")
                     }
 
-                    // Reset Timer Info Box
                     HStack(spacing: 14) {
                         Image(systemName: "clock.arrow.2.circlepath")
                             .font(.title3)
@@ -69,7 +68,6 @@ struct UsageSheetView: View {
     }
 }
 
-// MARK: - HIG Quota Progress Card
 private struct QuotaProgressCard: View {
     let title: String
     let icon: String

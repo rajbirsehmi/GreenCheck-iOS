@@ -17,24 +17,28 @@ struct HostScreen: View {
                         Label("Home", systemImage: "house")
                     }
                     .tag(0)
+                    .accessibilityIdentifier("tabItem_home")
 
                 ManualView(selectedTab: $selectedTab)
                     .tabItem {
                         Label("Manual", systemImage: "keyboard")
                     }
                     .tag(1)
+                    .accessibilityIdentifier("tabItem_manual")
 
                 HistoryView()
                     .tabItem {
                         Label("History", systemImage: "clock")
                     }
                     .tag(2)
+                    .accessibilityIdentifier("tabItem_history")
 
                 ScannerView(selectedTab: $selectedTab)
                     .tabItem {
                         Label("Scanner", systemImage: "barcode.viewfinder")
                     }
                     .tag(3)
+                    .accessibilityIdentifier("tabItem_scanner")
             }
             .tint(AppColors.primary)
             .navigationTitle(navigationTitle(for: selectedTab))
@@ -46,6 +50,7 @@ struct HostScreen: View {
                     } label: {
                         Image(systemName: "shield.pattern.checkered")
                     }
+                    .accessibilityIdentifier("toolbarButton_privacy")
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -53,6 +58,7 @@ struct HostScreen: View {
                     } label: {
                         Image(systemName: "chart.bar.xaxis")
                     }
+                    .accessibilityIdentifier("toolbarButton_usage")
                 }
             }
             .sheet(isPresented: $usageInfoSheet) {

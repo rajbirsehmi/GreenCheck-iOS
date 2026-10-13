@@ -11,7 +11,6 @@ struct PrivacyAndTransparencyView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-                    // Feature Items List
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Privacy & Transparency")
                             .font(.title2)
@@ -54,7 +53,6 @@ struct PrivacyAndTransparencyView: View {
 
                     // Side-by-Side Action Buttons Section
                     HStack(spacing: 12) {
-                        // Audit Code Button
                         Button {
                             openURL(auditCodeURL)
                         } label: {
@@ -67,8 +65,8 @@ struct PrivacyAndTransparencyView: View {
                         .buttonStyle(.bordered)
                         .tint(.accentColor)
                         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        .accessibilityIdentifier("privacy_button_auditCode")
 
-                        // ODbL License Button
                         Button {
                             openURL(odblLicenseURL)
                         } label: {
@@ -81,6 +79,7 @@ struct PrivacyAndTransparencyView: View {
                         .buttonStyle(.bordered)
                         .tint(.accentColor)
                         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        .accessibilityIdentifier("privacy_button_odblLicense")
                     }
                     .padding(.top, 12)
                 }
@@ -93,7 +92,6 @@ struct PrivacyAndTransparencyView: View {
     }
 }
 
-// MARK: - Feature Item Row Subview
 private struct PrivacyAndTransparencyFeatureRow: View {
     let icon: String
     let title: String
@@ -124,14 +122,4 @@ private struct PrivacyAndTransparencyFeatureRow: View {
             }
         }
     }
-}
-
-// MARK: - Preview Context
-#Preview {
-    Text("Host Screen")
-        .sheet(isPresented: .constant(true)) {
-            PrivacyAndTransparencyView()
-                .presentationDetents([.large])
-                .presentationDragIndicator(.visible)
-        }
 }

@@ -7,7 +7,6 @@ struct WelcomeView: View {
         VStack(spacing: 0) {
             ScrollView {
                 VStack(spacing: 36) {
-                    // Hero Header Section
                     VStack(spacing: 16) {
                         Image("logo")
                             .resizable()
@@ -16,6 +15,7 @@ struct WelcomeView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
                             .shadow(color: Color.black.opacity(0.08), radius: 10, x: 0, y: 4)
                             .padding(.top, 40)
+                            .accessibilityIdentifier("welcome_logoImage")
 
                         Text("Welcome to GreenCheck")
                             .font(.largeTitle)
@@ -32,7 +32,6 @@ struct WelcomeView: View {
                             .padding(.horizontal, 32)
                     }
 
-                    // Feature Highlights Section
                     VStack(alignment: .leading, spacing: 24) {
                         OnboardingFeatureRow(
                             icon: "barcode.viewfinder",
@@ -60,7 +59,6 @@ struct WelcomeView: View {
                 .padding(.bottom, 24)
             }
 
-            // Bottom Action Section
             VStack(spacing: 12) {
                 Button {
                     dismiss()
@@ -73,6 +71,7 @@ struct WelcomeView: View {
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .tint(.accentColor)
+                .accessibilityIdentifier("welcome_button_getStarted")
 
                 Text("Powered by Open Food Facts")
                     .font(.caption2)
@@ -88,7 +87,6 @@ struct WelcomeView: View {
     }
 }
 
-// MARK: - Feature Row Component
 private struct OnboardingFeatureRow: View {
     let icon: String
     let iconColor: Color
@@ -119,9 +117,4 @@ private struct OnboardingFeatureRow: View {
             }
         }
     }
-}
-
-// MARK: - Preview Context
-#Preview {
-    WelcomeView()
 }
