@@ -19,6 +19,7 @@ struct ManualView: View {
                         limit: quotaManager.dailyLimit,
                         icon: "keyboard"
                     )
+                    .accessibilityIdentifier("manual_quotaBadge")
                 }
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
@@ -30,6 +31,7 @@ struct ManualView: View {
                     TextField("Enter Barcode Number", text: $barcode)
                         .keyboardType(.numberPad)
                         .focused($isFieldFocused)
+                        .accessibilityIdentifier("manual_textField_barcode")
                         .onChange(of: barcode) { _, newValue in
                             let filtered = newValue.filter { $0.isNumber }
                             barcode = String(filtered.prefix(14))
@@ -43,6 +45,7 @@ struct ManualView: View {
                                 .foregroundStyle(AppColors.onSurfaceVariant)
                         }
                         .buttonStyle(.plain)
+                        .accessibilityIdentifier("manual_button_clearInput")
                     }
                 }
             } footer: {
@@ -55,6 +58,7 @@ struct ManualView: View {
                         Spacer()
                         if viewModel?.isLoading == true {
                             ProgressView()
+                                .accessibilityIdentifier("manual_progress_loading")
                         } else {
                             Text("Search Product")
                                 .fontWeight(.semibold)
@@ -62,6 +66,7 @@ struct ManualView: View {
                         Spacer()
                     }
                 }
+                .accessibilityIdentifier("manual_button_search")
                 .disabled(barcode.trimmingCharacters(in: .whitespaces).isEmpty || (viewModel?.isLoading ?? false))
             }
         }
@@ -84,6 +89,7 @@ struct ManualView: View {
             ToolbarItemGroup(placement: .keyboard) {
                 Spacer()
                 Button("Done") { isFieldFocused = false }
+                    .accessibilityIdentifier("manual_keyboard_doneButton")
             }
         }
         .alert("Quota Depleted for Today", isPresented: $showQuotaAlert) {

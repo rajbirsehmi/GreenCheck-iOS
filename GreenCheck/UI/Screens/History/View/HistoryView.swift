@@ -15,6 +15,7 @@ struct HistoryView: View {
                         systemImage: "clock",
                         description: Text("Products you search or scan will appear here.")
                     )
+                    .accessibilityIdentifier("history_emptyState")
                 } else {
                     List {
                         Section {
@@ -27,6 +28,7 @@ struct HistoryView: View {
                                 }
                             }
                             .pickerStyle(.segmented)
+                            .accessibilityIdentifier("history_filterPicker")
                         }
                         .listRowBackground(Color.clear)
                         .listRowInsets(EdgeInsets())
@@ -36,6 +38,7 @@ struct HistoryView: View {
                                 NavigationLink(destination: ProductView(product: product)) {
                                     HistoryRowCell(product: product)
                                 }
+                                .accessibilityIdentifier("history_row_\(product.id)")
                             }
                             .onDelete { offsets in
                                 Task { await viewModel.deleteItem(at: offsets) }
@@ -52,6 +55,7 @@ struct HistoryView: View {
                                     Spacer()
                                 }
                             }
+                            .accessibilityIdentifier("history_button_clearHistoryPrompt")
                         }
                     }
                     .listStyle(.insetGrouped)
@@ -65,11 +69,14 @@ struct HistoryView: View {
             ),
             prompt: "Search History"
         )
+        .accessibilityIdentifier("history_searchBar")
         .alert("Clear Scan History?", isPresented: $showClearAlert) {
             Button("Clear All", role: .destructive) {
                 Task { await viewModel?.clearAll() }
             }
+            .accessibilityIdentifier("history_alert_clearAll")
             Button("Cancel", role: .cancel) { }
+                .accessibilityIdentifier("history_alert_cancel")
         } message: {
             Text("This action cannot be undone.")
         }
