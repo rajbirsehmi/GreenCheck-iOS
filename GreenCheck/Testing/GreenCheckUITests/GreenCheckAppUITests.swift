@@ -18,6 +18,11 @@ final class GreenCheckAppUITests: XCTestCase {
         
         app.launchArguments.append("--uitesting")
         app.launch()
+        
+        let getStartedButton = app.buttons["welcome_button_getStarted"]
+        if getStartedButton.waitForExistence(timeout: 3.0) {
+            getStartedButton.tap()
+        }
     }
     
     // MARK: - Flow 1: Search through Manual barcode (Using Mock)
