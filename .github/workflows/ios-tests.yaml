@@ -9,7 +9,7 @@ on:
 jobs:
   test-ios:
     name: Build & Run Unit and UI Tests
-    runs-on: macos-26  # Modern macOS runner with Xcode 26 / iOS 26 SDKs
+    runs-on: macos-26
 
     steps:
       - name: Checkout Repository
@@ -22,7 +22,7 @@ jobs:
           xcodebuild test \
             -project GreenCheck.xcodeproj \
             -scheme GreenCheck \
-            -destination "platform=iOS Simulator,name=iPhone 16,OS=26.0" \
+            -destination "platform=iOS Simulator,name=Any iOS Simulator Device" \
             -only-testing:GreenCheckTests \
             clean test
 
@@ -33,6 +33,6 @@ jobs:
           xcodebuild test \
             -project GreenCheck.xcodeproj \
             -scheme GreenCheck \
-            -destination "platform=iOS Simulator,name=iPhone 16,OS=26.0" \
+            -destination "platform=iOS Simulator,name=Any iOS Simulator Device" \
             -only-testing:GreenCheckUITests \
             test
