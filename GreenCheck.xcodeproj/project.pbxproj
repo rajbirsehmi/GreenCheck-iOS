@@ -34,8 +34,39 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				Resources/Mocks/AlternateSuggestions.json,
+				Resources/Mocks/ProductNotFound.json,
+				Resources/Mocks/SingleProduct.json,
+				Testing/GreenCheckTests/HistoryFlowTests.swift,
+				Testing/GreenCheckTests/MockJsonLoaderTest.swift,
+				Testing/GreenCheckTests/ProductFlowTests.swift,
+				Testing/GreenCheckUITests/GreenCheckAppUITests.swift,
 			);
 			target = 082960BA3074F08800B06CEF /* GreenCheck */;
+		};
+		08AFB0F2307E0D510042EBCC /* Exceptions for "GreenCheck" folder in "GreenCheckTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Resources/Mocks/AlternateSuggestions.json,
+				Resources/Mocks/ProductNotFound.json,
+				Resources/Mocks/SingleProduct.json,
+				Resources/Mocks/URLs.txt,
+				Testing/GreenCheckTests/HistoryFlowTests.swift,
+				Testing/GreenCheckTests/MockJsonLoaderTest.swift,
+				Testing/GreenCheckTests/ProductFlowTests.swift,
+			);
+			target = 082960C93074F08900B06CEF /* GreenCheckTests */;
+		};
+		08AFB0FA307E0DC60042EBCC /* Exceptions for "GreenCheck" folder in "GreenCheckUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Resources/Mocks/AlternateSuggestions.json,
+				Resources/Mocks/ProductNotFound.json,
+				Resources/Mocks/SingleProduct.json,
+				Resources/Mocks/URLs.txt,
+				Testing/GreenCheckUITests/GreenCheckAppUITests.swift,
+			);
+			target = 082960D33074F08900B06CEF /* GreenCheckUITests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -44,6 +75,8 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				082961183074FCE600B06CEF /* Exceptions for "GreenCheck" folder in "GreenCheck" target */,
+				08AFB0F2307E0D510042EBCC /* Exceptions for "GreenCheck" folder in "GreenCheckTests" target */,
+				08AFB0FA307E0DC60042EBCC /* Exceptions for "GreenCheck" folder in "GreenCheckUITests" target */,
 			);
 			path = GreenCheck;
 			sourceTree = "<group>";
