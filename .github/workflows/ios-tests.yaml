@@ -9,44 +9,11 @@ on:
 jobs:
   test-ios:
     name: Build & Run Unit and UI Tests
-    runs-on: macos-26
+    runs-on: macos-15  # Uses the runner with pre-installed iOS simulators
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Download and Import iOS Simulator Runtime
-        run: |
-          echo "Checking available runtimes..."
-          xcrun simctl list runtimes
-
-          echo "Downloading iOS simulator runtime..."
-          mkdir -p ./runtimes
-          xcodebuild -downloadPlatform iOS -exportPath ./runtimes || true
-
-          RUNTIME_FILE=$(find ./runtimes -name "*.dmg" | head -n 1)
-          if [ -n "$RUNTIME_FILE" ]; then
-            echo "Importing runtime: $RUNTIME_FILE"
-            sudo xcodebuild -importPlatform "$RUNTIME_FILE"
-          else
-            echo "Runtime archive already cached or pre-installed."
-          fi
-
-      - name: Create and Boot iPhone 16 Simulator
-        run: |
-          echo "Finding installed iOS runtime identifier..."
-          IOS_RUNTIME=$(xcrun simctl list runtimes | grep -E "iOS" | tail -n 1 | awk '{print $NF}')
-          echo "Using runtime: $IOS_RUNTIME"
-
-          echo "Creating iPhone 16 simulator..."
-          SIM_UDID=$(xcrun simctl create "iPhone 16" com.apple.CoreSimulator.SimDeviceType.iPhone-16 "$IOS_RUNTIME")
-          echo "Created simulator UDID: $SIM_UDID"
-
-          echo "Booting simulator..."
-          xcrun simctl boot "$SIM_UDID" 2>/dev/null || true
-          xcrun simctl bootstatus "$SIM_UDID" -b
-
-          echo "SIMULATOR_UDID=$SIM_UDID" >> "$GITHUB_ENV"
 
       - name: Run Unit Tests (GreenCheckTests)
         env:
@@ -55,7 +22,7 @@ jobs:
           xcodebuild test \
             -project GreenCheck.xcodeproj \
             -scheme GreenCheck \
-            -destination "platform=iOS Simulator,id=$SIMULATOR_UDID" \
+            -destination "platform=iOS Simulator,name=iPhone 16" \
             -only-testing:GreenCheckTests \
             clean test
 
@@ -66,6 +33,6 @@ jobs:
           xcodebuild test \
             -project GreenCheck.xcodeproj \
             -scheme GreenCheck \
-            -destination "platform=iOS Simulator,id=$SIMULATOR_UDID" \
+            -destination "platform=iOS Simulator,name=iPhone 16" \
             -only-testing:GreenCheckUITests \
             test
