@@ -22,6 +22,28 @@ jobs:
           sudo xcode-select -s "$XCODE/Contents/Developer"
           xcodebuild -version
 
+      - name: Prepare Xcode and CoreSimulator
+        run: |
+          sudo xcodebuild -runFirstLaunch
+          xcrun simctl shutdown all || true
+          sudo killall -9 com.apple.CoreSimulator.CoreSimulatorService || true
+          sleep 5
+          xcrun simctl list devices available | head -20
+
+      - name: Ensure iOS platform is installed
+        run: |
+          xcodebuild -showsdks | grep -i "iOS Simulator" || {
+            echo "No iOS Simulator SDK visible, downloading platform..."
+            xcodebuild -downloadPlatform iOS
+          }
+
+      - name: Diagnose destinations
+        run: |
+          xcodebuild -showsdks
+          xcodebuild -project GreenCheck.xcodeproj -scheme GreenCheck -showdestinations
+          xcodebuild -project GreenCheck.xcodeproj -scheme GreenCheck -showBuildSettings \
+            | grep -E "IPHONEOS_DEPLOYMENT_TARGET|SUPPORTED_PLATFORMS|SDKROOT" || true
+
       - name: Select an iPhone 16 simulator
         run: |
           UDID=$(xcrun simctl list devices available -j | jq -r '
@@ -30,16 +52,14 @@ jobs:
               | .value[]
               | select(.name == "iPhone 16") ]
             | last | .udid // empty')
-
           if [ -z "$UDID" ]; then
-            echo "No iPhone 16 simulator found. Available devices:"
-            xcrun simctl list devices available
+            echo "No iPhone 16 simulator found."
             exit 1
           fi
-
           echo "Using simulator: $UDID"
           echo "SIM_UDID=$UDID" >> "$GITHUB_ENV"
           xcrun simctl boot "$UDID" || true
+          xcrun simctl bootstatus "$UDID" -b
 
       - name: Run Unit Tests (GreenCheckTests)
         env:
