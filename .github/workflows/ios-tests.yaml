@@ -9,11 +9,50 @@ on:
 jobs:
   test-ios:
     name: Build & Run Unit and UI Tests
-    runs-on: macos-15  # Uses the runner with pre-installed iOS simulators
+    runs-on: macos-15
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Show Xcode and available simulators
+        run: |
+          xcodebuild -version
+          xcrun simctl list runtimes
+          xcrun simctl list devices available
+
+      - name: Install iOS platform if no simulator runtime exists
+        run: |
+          if ! xcrun simctl list runtimes available | grep -q "iOS"; then
+            echo "No iOS runtime found, downloading..."
+            xcodebuild -downloadPlatform iOS
+          fi
+
+      - name: Select an iPhone simulator
+        run: |
+          pick_udid() {
+            xcrun simctl list devices available -j | jq -r '
+              [ .devices | to_entries | sort_by(.key) | reverse | .[]
+                | select(.key | contains("iOS"))
+                | .value[]
+                | select(.name | startswith("iPhone")) ]
+              | first | .udid // empty'
+          }
+
+          UDID=$(pick_udid)
+
+          # If a runtime exists but has no iPhone device, create one
+          if [ -z "$UDID" ]; then
+            RUNTIME=$(xcrun simctl list runtimes available -j | jq -r '
+              [ .runtimes[] | select(.identifier | contains("iOS")) ]
+              | last | .identifier')
+            UDID=$(xcrun simctl create "CI iPhone" \
+              "com.apple.CoreSimulator.SimDeviceType.iPhone-16" "$RUNTIME")
+          fi
+
+          echo "Using simulator: $UDID"
+          echo "SIM_UDID=$UDID" >> "$GITHUB_ENV"
+          xcrun simctl boot "$UDID" || true
 
       - name: Run Unit Tests (GreenCheckTests)
         env:
@@ -22,9 +61,8 @@ jobs:
           xcodebuild test \
             -project GreenCheck.xcodeproj \
             -scheme GreenCheck \
-            -destination "platform=iOS Simulator,name=iPhone 16" \
-            -only-testing:GreenCheckTests \
-            clean test
+            -destination "platform=iOS Simulator,id=$SIM_UDID" \
+            -only-testing:GreenCheckTests
 
       - name: Run UI Tests (GreenCheckUITests)
         env:
@@ -33,6 +71,5 @@ jobs:
           xcodebuild test \
             -project GreenCheck.xcodeproj \
             -scheme GreenCheck \
-            -destination "platform=iOS Simulator,name=iPhone 16" \
-            -only-testing:GreenCheckUITests \
-            test
+            -destination "platform=iOS Simulator,id=$SIM_UDID" \
+            -only-testing:GreenCheckUITests
