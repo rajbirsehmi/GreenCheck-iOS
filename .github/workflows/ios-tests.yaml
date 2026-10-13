@@ -1,31 +1,57 @@
-name: iOS CI & Full Test Suite
+name: iOS CI
 
 on:
   push:
-    branches: [ "main", "master", "develop", "testing" ]
+    branches: [ "main", "master", "develop" ]
   pull_request:
-    branches: [ "main", "master", "develop", "testing" ]
+    branches: [ "main", "master", "develop" ]
+
+env:
+  PROJECT: GreenCheck.xcodeproj
+  SCHEME: GreenCheck
 
 jobs:
-  test-ios:
-    name: Build & Run Unit and UI Tests
+  lint:
     runs-on: xcode-27  # Hosted image with Xcode 27 (preview) and the iOS 27 simulator runtime
-
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install SwiftLint
+        run: |
+          which swiftlint >/dev/null 2>&1 || brew install swiftlint
+          swiftlint version
+
+      - name: Run Lint
+        run: swiftlint lint --reporter github-actions-logging
+
+  unit-tests:
+    runs-on: xcode-27
+    needs: lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Select newest Xcode
         run: |
-          # No beta filter: Xcode 27 is a preview image and its folder may be named beta
           XCODE=$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)
           echo "Selecting $XCODE"
           sudo xcode-select -s "$XCODE/Contents/Developer"
           xcodebuild -version
 
+      - name: Cache Swift packages
+        uses: actions/cache@v4
+        with:
+          path: SourcePackages
+          key: spm-${{ runner.os }}-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: spm-${{ runner.os }}-
+
       - name: Select an iPhone simulator
         run: |
-          # Newest iOS runtime; prefer "iPhone 16", otherwise any iPhone on that runtime
           UDID=$(xcrun simctl list devices available -j | jq -r '
             [ .devices | to_entries
               | map(select(.key | contains("SimRuntime.iOS")))
@@ -48,60 +74,193 @@ jobs:
       - name: Prepare results folder
         run: mkdir -p TestResults
 
-      - name: Run Unit Tests (GreenCheckTests)
+      - name: Run Unit Tests
         env:
           NSUnbufferedIO: "YES"
         run: |
           xcodebuild test \
-            -project GreenCheck.xcodeproj \
-            -scheme GreenCheck \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
             -destination "platform=iOS Simulator,id=$SIM_UDID" \
+            -clonedSourcePackagesDirPath SourcePackages \
             -only-testing:GreenCheckTests \
             -resultBundlePath TestResults/unit.xcresult
 
-      - name: Run UI Tests (GreenCheckUITests)
-        if: ${{ !cancelled() }}  # run even if unit tests failed, so we get both reports
+      - name: Extract unit test reports
+        if: always()
+        run: |
+          BUNDLE="TestResults/unit.xcresult"
+          [ -d "$BUNDLE" ] || { echo "No $BUNDLE, skipping"; exit 0; }
+
+          xcrun xcresulttool get test-results summary --path "$BUNDLE" --compact > TestResults/unit-summary.json || true
+          xcrun xcresulttool get test-results tests   --path "$BUNDLE" --compact > TestResults/unit-tests.json   || true
+
+          {
+            echo "### Unit tests"
+            jq -r '"Result: \(.result // "unknown") | passed: \(.passedTests // 0) | failed: \(.failedTests // 0) | skipped: \(.skippedTests // 0)"' TestResults/unit-summary.json || true
+            echo
+            jq -r '.testFailures[]? | "- **\(.testName)**: \(.failureText)"' TestResults/unit-summary.json || true
+            echo
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload Unit Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit-test-results
+          path: TestResults/
+          if-no-files-found: ignore
+          retention-days: 7
+
+  ui-tests:
+    runs-on: xcode-27
+    needs: unit-tests
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Select newest Xcode
+        run: |
+          XCODE=$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)
+          echo "Selecting $XCODE"
+          sudo xcode-select -s "$XCODE/Contents/Developer"
+          xcodebuild -version
+
+      - name: Cache Swift packages
+        uses: actions/cache@v4
+        with:
+          path: SourcePackages
+          key: spm-${{ runner.os }}-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: spm-${{ runner.os }}-
+
+      - name: Select an iPhone simulator
+        run: |
+          UDID=$(xcrun simctl list devices available -j | jq -r '
+            [ .devices | to_entries
+              | map(select(.key | contains("SimRuntime.iOS")))
+              | sort_by(.key) | last | .value[]
+              | select(.name | startswith("iPhone")) ] as $phones
+            | ([ $phones[] | select(.name == "iPhone 16") ] + $phones)
+            | first | .udid // empty') || true
+
+          if [ -z "$UDID" ]; then
+            echo "No iPhone simulator found on an iOS runtime. Available devices:"
+            xcrun simctl list devices available
+            exit 1
+          fi
+
+          echo "Using simulator: $UDID"
+          echo "SIM_UDID=$UDID" >> "$GITHUB_ENV"
+          xcrun simctl boot "$UDID" || true
+          xcrun simctl bootstatus "$UDID" -b
+
+      - name: Prepare results folder
+        run: mkdir -p TestResults
+
+      - name: Run iOS UI Tests
         env:
           NSUnbufferedIO: "YES"
         run: |
           xcodebuild test \
-            -project GreenCheck.xcodeproj \
-            -scheme GreenCheck \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
             -destination "platform=iOS Simulator,id=$SIM_UDID" \
+            -clonedSourcePackagesDirPath SourcePackages \
             -only-testing:GreenCheckUITests \
             -resultBundlePath TestResults/ui.xcresult \
-            -collect-test-diagnostics never
+            -collect-test-diagnostics never \
+            || { echo "Tests failed, capturing simulator log..."; timeout 60s xcrun simctl spawn "$SIM_UDID" log show --last 30m > TestResults/simulator.log 2>&1 || true; exit 1; }
 
-      - name: Extract reports from result bundles
-        if: ${{ !cancelled() }}
+      - name: Extract UI test reports
+        if: always()
         run: |
-          for NAME in unit ui; do
-            BUNDLE="TestResults/$NAME.xcresult"
-            [ -d "$BUNDLE" ] || { echo "No $BUNDLE, skipping"; continue; }
+          BUNDLE="TestResults/ui.xcresult"
+          [ -d "$BUNDLE" ] || { echo "No $BUNDLE, skipping"; exit 0; }
 
-            # Machine-readable summary and per-test results
-            xcrun xcresulttool get test-results summary --path "$BUNDLE" --compact > "TestResults/$NAME-summary.json" || true
-            xcrun xcresulttool get test-results tests   --path "$BUNDLE" --compact > "TestResults/$NAME-tests.json"   || true
+          xcrun xcresulttool get test-results summary --path "$BUNDLE" --compact > TestResults/ui-summary.json || true
+          xcrun xcresulttool get test-results tests   --path "$BUNDLE" --compact > TestResults/ui-tests.json   || true
 
-            # Screenshots and attachments from failed tests only
-            mkdir -p "TestResults/$NAME-attachments"
-            xcrun xcresulttool export attachments --path "$BUNDLE" \
-              --output-path "TestResults/$NAME-attachments" --only-failures || true
+          # Screenshots and attachments from failed tests only
+          mkdir -p TestResults/ui-attachments
+          xcrun xcresulttool export attachments --path "$BUNDLE" \
+            --output-path TestResults/ui-attachments --only-failures || true
 
-            # Short failure list on the workflow run page
-            {
-              echo "### $NAME tests"
-              jq -r '"Result: \(.result // "unknown") | passed: \(.passedTests // 0) | failed: \(.failedTests // 0) | skipped: \(.skippedTests // 0)"' "TestResults/$NAME-summary.json" || true
-              echo
-              jq -r '.testFailures[]? | "- **\(.testName)**: \(.failureText)"' "TestResults/$NAME-summary.json" || true
-              echo
-            } >> "$GITHUB_STEP_SUMMARY"
-          done
+          {
+            echo "### UI tests"
+            jq -r '"Result: \(.result // "unknown") | passed: \(.passedTests // 0) | failed: \(.failedTests // 0) | skipped: \(.skippedTests // 0)"' TestResults/ui-summary.json || true
+            echo
+            jq -r '.testFailures[]? | "- **\(.testName)**: \(.failureText)"' TestResults/ui-summary.json || true
+            echo
+          } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Upload test reports
-        if: ${{ !cancelled() }}
+      - name: Upload Raw Test Results
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-results
-          path: TestResults/
-          retention-days: 14
+          name: raw-test-results
+          path: |
+            TestResults/*.xcresult
+            TestResults/*.json
+            TestResults/*-attachments/**
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Upload Simulator Log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: device-log
+          path: TestResults/simulator.log
+          if-no-files-found: ignore
+          retention-days: 7
+
+  build-app:
+    runs-on: xcode-27
+    needs: ui-tests
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Select newest Xcode
+        run: |
+          XCODE=$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)
+          echo "Selecting $XCODE"
+          sudo xcode-select -s "$XCODE/Contents/Developer"
+          xcodebuild -version
+
+      - name: Cache Swift packages
+        uses: actions/cache@v4
+        with:
+          path: SourcePackages
+          key: spm-${{ runner.os }}-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: spm-${{ runner.os }}-
+
+      - name: Build Debug App (simulator)
+        run: |
+          xcodebuild build \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -configuration Debug \
+            -destination "generic/platform=iOS Simulator" \
+            -clonedSourcePackagesDirPath SourcePackages \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Package .app
+        run: |
+          APP=$(find build/Build/Products/Debug-iphonesimulator -maxdepth 1 -name "*.app" | head -1)
+          [ -n "$APP" ] || { echo "No .app produced"; exit 1; }
+          echo "Packaging $APP"
+          ditto -c -k --sequesterRsrc --keepParent "$APP" GreenCheck-debug.app.zip
+
+      - name: Upload App
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug
+          path: GreenCheck-debug.app.zip
+          retention-days: 7
