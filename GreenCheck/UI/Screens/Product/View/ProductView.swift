@@ -58,7 +58,8 @@ struct ProductView: View {
             }
             .accessibilityIdentifier("product_section_status")
 
-            // Alternate Suggestion Section (Only shown if status is NOT verified vegan)
+            /*
+            // Alternate Suggestion Section (Disabled due to backend issues)
             if product.veganStatus != .yes {
                 Section("Vegan Alternatives") {
                     alternativesContent
@@ -66,6 +67,7 @@ struct ProductView: View {
                 .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
                 .accessibilityIdentifier("product_section_alternatives")
             }
+            */
 
             // 1. Ingredient Analysis Section
             if !product.ingredients.isEmpty {
@@ -187,6 +189,11 @@ struct ProductView: View {
                 viewModel = ProductViewModel(context: modelContext)
             }
         }
+        .task {
+            if let vm = viewModel {
+                await vm.saveProductIfNeeded(product)
+            }
+        }
     }
 }
 
@@ -205,6 +212,7 @@ private extension ProductView {
             .filter { !$0.isEmpty }
     }
 
+    /*
     @ViewBuilder
     var alternativesContent: some View {
         if let viewModel = viewModel {
@@ -272,6 +280,7 @@ private extension ProductView {
             }
         }
     }
+    */
 
     func statusColor(for status: DietaryStatus) -> Color {
         switch status {
@@ -321,6 +330,7 @@ private struct IngredientAnalysisRow: View {
     }
 }
 
+/*
 // MARK: - HIG Alternative Carousel Card Component
 struct AlternativeCard: View {
     let product: ProductItem
@@ -379,3 +389,4 @@ struct AlternativeCard: View {
         .shadow(color: Color.black.opacity(0.03), radius: 4, x: 0, y: 2)
     }
 }
+*/

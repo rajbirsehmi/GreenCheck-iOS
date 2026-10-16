@@ -42,4 +42,13 @@ final class ProductViewModel {
 
         isLoadingAlternatives = false
     }
+    
+    @MainActor
+    func saveProductIfNeeded(_ product: ProductItem) async {
+        do {
+            try await repo.cacheProduct(product: product)
+        } catch {
+            print("⚠️ Failed to cache product: \(error.localizedDescription)")
+        }
+    }
 }
