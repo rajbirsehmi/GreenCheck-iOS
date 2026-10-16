@@ -9,14 +9,18 @@ struct LocaleDetector {
         return countryTag(for: regionCode)
     }
     
+    /// Returns the 2-letter country code for use with the `cc=` query parameter (e.g., "us", "in").
+    static var currentDeviceCountryCode: String {
+        return Locale.current.region?.identifier.lowercased() ?? "us"
+    }
+    
     /// Converts a region code into an OFF-compatible country tag format.
     static func countryTag(for regionCode: String) -> String {
         let normalizedCode = regionCode.lowercased()
         
-        // Map common country codes to OpenFoodFacts tag naming conventions
         switch normalizedCode {
         case "in":
-            return "en:india"        //
+            return "en:india"
         case "us":
             return "en:united-states"
         case "gb", "uk":
@@ -36,7 +40,7 @@ struct LocaleDetector {
         case "br":
             return "en:brazil"
         case "it":
-            return "en:italy"        //
+            return "en:italy"
         case "es":
             return "en:spain"
         case "nl":
@@ -48,7 +52,6 @@ struct LocaleDetector {
         case "nz":
             return "en:new-zealand"
         default:
-            // Generic fallback pattern for any unmapped regions
             return "en:\(normalizedCode)"
         }
     }

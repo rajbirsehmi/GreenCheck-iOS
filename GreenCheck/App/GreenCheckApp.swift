@@ -13,6 +13,7 @@ struct GreenCheckApp: App {
     
     init() {
         applyCustomFont()
+        print(URL.applicationSupportDirectory.path(percentEncoded: false))
     }
     
     var body: some Scene {

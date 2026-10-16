@@ -11,9 +11,10 @@ final class ProductLocalDataSourceImpl: ProductLocalDataSource {
     }
 
     func getCachedProduct(byBarcode barcode: String) async -> ProductItem? {
+        let normalizedId = barcode.normalizedBarcode()
         do {
             var descriptor = FetchDescriptor<ProductEntity>(
-                predicate: #Predicate { $0.id == barcode },
+                predicate: #Predicate { $0.id == normalizedId },
                 sortBy: [SortDescriptor(\.createdAt, order: .reverse)]
             )
             descriptor.fetchLimit = 1
@@ -40,9 +41,10 @@ final class ProductLocalDataSourceImpl: ProductLocalDataSource {
     }
     
     func isProductCached(byBarcode barcode: String) async -> Bool {
+        let normalizedId = barcode.normalizedBarcode()
         do {
             let descriptor = FetchDescriptor<ProductEntity>(
-                predicate: #Predicate { $0.id == barcode }
+                predicate: #Predicate { $0.id == normalizedId }
             )
             return try context.fetchCount(descriptor) > 0
         } catch {
@@ -52,9 +54,10 @@ final class ProductLocalDataSourceImpl: ProductLocalDataSource {
     }
     
     func saveProduct(_ product: ProductItem) async throws {
+        let normalizedId = product.id.normalizedBarcode()
         do {
             let descriptor = FetchDescriptor<ProductEntity>(
-                predicate: #Predicate { $0.id == product.id }
+                predicate: #Predicate { $0.id == normalizedId }
             )
             
             let ingredientsData = try JSONEncoder().encode(product.ingredients)
@@ -68,7 +71,11 @@ final class ProductLocalDataSourceImpl: ProductLocalDataSource {
                 existing.ingredientsData = ingredientsData
                 existing.createdAt = .now
             } else {
+                // Ensure the domain product itself uses the normalized ID
+                var normalizedProduct = product
+                // (If product.id is a let constant, you can adjust your ProductItem initializer or entity mapping to normalize the ID on creation)
                 let entity = ProductEntity(from: product)
+                entity.id = normalizedId
                 entity.ingredientsData = ingredientsData
                 context.insert(entity)
             }

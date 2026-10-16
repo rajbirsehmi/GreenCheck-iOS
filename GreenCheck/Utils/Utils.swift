@@ -7,15 +7,12 @@
 
 import Foundation
 
-struct Utils {
-    
-    private var appId: UUID
-    
-    mutating func setAppUUID() {
-        appId = UUID()
-    }
-    
-    func getAppUUID() -> String {
-        return appId.uuidString
+extension String {
+    func normalizedBarcode() -> String {
+        let trimmed = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        if trimmed.count < 14 {
+            return String(repeating: "0", count: 14 - trimmed.count) + trimmed
+        }
+        return trimmed
     }
 }

@@ -16,10 +16,13 @@ struct ProductRepositoryImpl: ProductRepository {
     }
 
     func getProduct(byBarcode barcode: String, source: LookupSource) async throws -> ProductItem {
+        if let cachedProduct = await localDataSource.getCachedProduct(byBarcode: barcode) {
+            return cachedProduct
+        }
+
         let remoteDTO = try await remoteDataSource.getProductDTO(barcode: barcode)
         let domainProduct = ProductItem(from: remoteDTO)
 
-        // Increment quota strictly on successful remote responses (valid product names)
         if domainProduct.name != "Unknown Product" {
             switch source {
             case .scanner:

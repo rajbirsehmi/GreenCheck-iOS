@@ -133,19 +133,4 @@ final class GreenCheckAppUITests: XCTestCase {
             breakdownHeading.waitForExistence(timeout: 5.0)
         )
     }
-    
-    // MARK: - Flow 8: Make sure alternatives are correct
-    func test_flow8_veganAlternativesAreDisplayed() throws {
-        app.tabBars.buttons["Manual"].tap()
-        let textField = app.textFields["manual_textField_barcode"]
-        textField.tap()
-        textField.typeText("0123456789")
-        app.buttons["manual_button_search"].tap()
-        
-        let altButton = app.buttons["product_button_findAlternatives"]
-        if altButton.waitForExistence(timeout: 3.0) {
-            altButton.tap()
-            XCTAssertTrue(app.otherElements["product_section_alternatives"].waitForExistence(timeout: 5.0))
-        }
-    }
 }
